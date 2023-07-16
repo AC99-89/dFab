@@ -3,4 +3,38 @@
 <head> 
 	<title> Week 4 </title>
 </head>
-<body style="font-size: 36px; text-align: center"> Week 4:  </body>
+<body style="font-size: 36px; text-align: center"> Week 4: Microcontroller Programming </body>
+<p style="font-size: 18px"> This week, we learned how to work with microcontrollers and learned how to program in C and C++! The professor lets us use two microcontrollers: the popular Arduino Uno, and the harder to use ESP 32 Dev Module. We also learned how to do some circuitry and learned how to use LEDs, potentiometers, and more! </p>
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Program A Microcontroller To Do Something </pre>
+<p style="font-size: 18px"> My idea is to program the microcontroller to make a motor go faster or slower using a potentiometer. </p>
+<p style="font-size: 18px"> Since my motor for my kinetic sculpture broke, I got a new hobby motor from the Fabrication Storage Compartment and an Arduino Uno. (I was going to use ESP 32 but it was too difficult for me to use.) I got some wires, a potentiometer, and an L9110 Motor Driver and started assembling. </p>
+<p style="font-size: 18px"> I started by plugging a wire into GND (ground) and into 3.3V and attached it to GND and VCC respectively into the L9110 Motor Driver. Then, I screwed my motor into the L9110 Motor Driver and attached my potentiometer to A0, A2, and A4 on the Analog IN section on my Arduino Uno. Next, I plugged some wires into pins ~3 and 4 and inserted them in A-1A and A-1B respectively into the L9110 Motor Driver as well; my circuit is now ready and I can move onto programming. </p>
+<img src=".\IMG_3116 (1) (1) (1) (1) (1) (1).jpg" alt="Fully assembled circuit." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px"> Time for programming! I went into the programming examples on the professor's website and picked the code that allowed me to change the speed of my motor using a potentiometer. I then placed that code into the Arduino IDE; the code is shown below. </p>
+<pre  style="font-size: 18px"> <code> /*  Code to run motor in one direction based on potentiometer reading.
+ *  Motor driver speed control on pin 3 (direction LOW by default)
+ *  Potentiometer plugged into A0, A2, and A4 on Arduino Uno (or similar).
+ */
+
+void setup() {
+  pinMode(3, OUTPUT);
+  pinMode(A0, OUTPUT);  //GND
+  pinMode(A4, OUTPUT);  //3.3V
+
+  digitalWrite(A0, LOW);
+  digitalWrite(A4, HIGH);
+}
+
+void loop() {
+  int pot_value = analogRead(A2);   //pot wiper on A2
+  int motor_speed = map(pot_value, 0, 1023, 255, 0); // map motor_level to pot_value so zero corresponds to lowest speed
+  analogWrite(3, motor_speed);
+  delay(1);
+}</code> </pre>
+<p style="font-size: 18px"> My project worked! <a   href=https://www.youtube.com/shorts/XfM1vozoXvA> You can watch it working using this link. </a> Time to move on to assignment 2! </p> 
+<img src=".\IMG_3118 (1) (1) (1) (1) (1) (1).jpg" alt="Fully assembled project." style="width: 500px; height: 500 px;">
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 2: Draw A Schematic Of My Circuit </pre>
+<p style="font-size: 18px"> I used <a   href=https://www.circuit-diagram.org/> Circuit Diagram </a> to make my circuit. Circuit Diagram does not have a L9110 Motor Driver component so I used another component and went with it. I added my arduino Uno in and hooked a potentiometer to the A0, A2, and A4 pins. Then, I added two wires going from GND and 3.3V to GND and VCC respectively. I then added two pins from ~3 and 4 to LE (A-1A) and CO (A-1B). Finally, I added my motor and plugged my wires from LE and CO to the motor and I got my circuit diagram!</p> 
+<img src=".\Screenshot 2023-07-16 151126 (1) (1) (1) (1).png" alt="My circuit diagram." style="width: 500px; height: 500 px;">
