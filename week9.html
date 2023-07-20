@@ -3,4 +3,76 @@
 <head> 
 	<title> Week 9 </title>
 </head>
-<body style="font-size: 36px; text-align: center"> Week 9:  </body>
+<body style="font-size: 36px; text-align: center"> Week 9: Radio, Wifi, Bluetooth (IoT)  </body>
+<p style="font-size: 18px"> This week, learned how to remotely control two microcontroller using radio or wifi by using ESP32 microcontrollers. Also, this is the last normal assignment of the semester. The rest of the weeks will all be about working on the final project. We are getting to the end of the road now!  </p>
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Remotely Control A Microcontroller 
+Using Wifi Or Radio (With A Partner!) </pre>
+<p style="font-size: 18px"> For this assignment, we were allowed to work with a partner and so I teamed up with Gavin Lim; <a   href=https://gavinnlimm.github.io/phys-s-12/01_intro/index.html> you can check out his website using this link. </a> We decided to remotely control an LED light using Wifi. (This will be great practice for my remote controlled ant!) </p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Setting Up Our Circuit </b> </p>
+<p style="font-size: 18px"> We needed to set up our circuit which was pretty simple. We plugged a wire to ground onto a breadboard and placed a wire onto pin 5 of our ESP 32 Dev Module and placed it onto a breadboard. Then, we got a 10K resistor and an LED and our circuit was finished. </p>
+<img src=".\week9Circuit.jpg" alt="Our circuit." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Setting Up FireBase </b> </p>
+<p style="font-size: 18px"> Gavin mainly did this part. Gavin logged on to firebase and created a database. He then set the rules to true. Gavin then took example code from the professor's website and pasted it into our ESP-32 Dev Module and pasted our Wifi SSD and Password including our Firebase secret code and URL. (For privacy reasons, these steps do not have any photos and does not include extra information.) The code for the microcontroller is shown below.  </p>
+<pre  style="font-size: 18px"> <code> 
+#include WiFi.h                                 // esp32 library
+    #include FirebaseESP32.h                       // firebase library
+
+    #define FIREBASE_HOST "esp32-led-9a0ab.firebaseio.com"  // the project name address from firebase id
+    #define FIREBASE_AUTH ""                                // the secret key generated from firebase
+    #define WIFI_SSID ""                                    // input your home or public wifi name
+    #define WIFI_PASSWORD ""                                // password of wifi ssid
+
+    String fireString = "";                                          // led status received from firebase
+    int ledpin = 5;
+
+    //Define FirebaseESP32 data object
+    FirebaseData firebaseData;
+
+    void setup() {
+      Serial.begin(115200);
+      delay(1000);
+      pinMode(ledpin, OUTPUT);
+      WiFi.begin(WIFI_SSID, WIFI_PASSWORD);                          // try to connect with wifi
+
+      Serial.print("Connecting to ");
+      Serial.print(WIFI_SSID);
+      while (WiFi.status() != WL_CONNECTED) {
+        Serial.print(".");
+        delay(500);
+      }
+
+      Serial.println();
+      Serial.print("Connected to ");
+      Serial.println(WIFI_SSID);
+      Serial.print("IP Address is : ");
+      Serial.println(WiFi.localIP());                                // print local IP address
+      Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);                  // connect to firebase
+      Firebase.reconnectWiFi(true);
+      Firebase.set(firebaseData, "/LED_STATUS", "OFF");              // set initial string of "OFF"
+    }
+
+    void loop() {
+
+      Firebase.get(firebaseData, "/LED_STATUS");                     // get led status input from firebase
+      fireString = firebaseData.stringData();                        // change to e.g. intData() or boolData()
+      Serial.println(fireString);
+
+      if (fireString == "ON") {                    // compare the input of led status received from firebase
+        Serial.println("Led Turned ON");
+        digitalWrite(ledpin, HIGH);                // make output led ON
+      }
+
+      else if (fireString == "OFF") {              // compare the input of led status received from firebase
+        Serial.println("Led Turned OFF");
+        digitalWrite(ledpin, LOW);                 // make output led OFF
+      }
+
+      else {
+        Serial.println("Please send ON/OFF");
+      }
+
+    }</code> </pre>
+<p style="font-size: 18px"> Our project worked! The micrcontroller successfully communicates with the Firebase data and so we finished our last regular assignment! Time to focus all on the final project! Make sure to check out Gavin Lin's website to see all the cool things he built as well! Below is a video of how our project works.  </p>
+    <iframe width="853" height="480" src="https://www.youtube.com/embed/Ak_ZU5y4sfE" title="Week 9 Remote Controlled LED Light" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</html>
