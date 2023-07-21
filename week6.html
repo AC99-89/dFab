@@ -3,7 +3,96 @@
 <head> 
 	<title> Week 6 </title>
 </head>
-<body style="font-size: 36px; text-align: center"> Week 6:  </body>
+<body style="font-size: 36px; text-align: center"> Week 6: Input Devices  </body>
+<p style="font-size: 18px"> This week, we learned how to use sensors and how to make our own capacitive sensor! </p>
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Gather Data From A Sensor </pre>
+<p style="font-size: 18px;"> My idea is to measure distance using an ultrasonic sensor. I have always wanted to use an ultrasonic sensor so this assignment is a perfect excuse for using one! </p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Wire The Circuit </b> </p>
+<p style="font-size: 18px;"> I decided to make the sensor first. I placed an ultrasonic sensor onto my breadboard and then plugged 4 pins into GND, 3.3V, and pins ~10 and ~11 on my Arduino Uno. </p>
+<img src=".\IMG_3146 (1) (1) (1) (1).jpg" alt="Fully assembled circuit." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Program The Microcontroller </b> </p>
+<p style="font-size: 18px;"> For the programming, I followed a YouTube tutorial from <a   href=https://www.youtube.com/watch?v=ZejQOX69K5M> How To Mechatronics </a> to make my program; below is the code. </p>
+<pre  style="font-size: 18px"> <code> 
+const int trigPin = 9;
+const int echoPin = 10;
 
+long duration;
+int distance; 
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration*0.034/2;  // Gives distance in cm
+
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}</code> </pre>
+<p style="font-size: 18px;"> After fixing a pin issue that involved having the trig and echo wires in the wrong place, the sensor worked and I graphed a chart with my sensor that includes my minimum and maximum ranges. Sadly, these minimum and maximum ranges are fixed and cannot change so I have no control over the ranges. The video and graph is shown below. </p>
+<iframe width="853" height="480" src="https://www.youtube.com/embed/L3ErtLLRTwU" title="Week 6 Assignment 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<img src=".\IMG_3160 2 (1) (1) (1) (1) (1).jpg" alt="Graph." style="width: 500px; height: 500 px;">
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 2: Gather Data From A DIY Capacitive Sensor </pre>
+<p style="font-size: 18px;"> I decided to make a capacitive sensor using copper and TX-RX Sensing. </p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Wire The Circuit </b> </p>
+<p style="font-size: 18px;">  First I cut two wires of copper tape.  <br> <img src=".\IMG_3161 (1) (1) (1) (1).jpg" alt="Copper Wires." style="width: 500px; height: 500 px;"> <br> Then, I got some wires and attached them to the tape. <br> <img src=".\IMG_3162 (1) (1) (1) (1).jpg" alt="Attached copper tape to wires." style="width: 500px; height: 500 px;"> <br> Next, I attached the wires to the TX and RX wires. <br> <img src=".\IMG_3163 (1) (1) (1) (1).jpg" alt="Hooked to microcontroller." style="width: 500px; height: 500 px; transform: rotateZ(270deg);"> <br> My circuit is now finished.</p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Program the Circuit </b> </p>
+<p style="font-size: 18px;"> The professor had code for my capacitive sensor online, so I decided to take the code from the website and upload it to my arduino. The code is shown below. </p>
+<pre  style="font-size: 18px"> <code> 
+long result;   //variable for the result of the tx_rx measurement.
+int analog_pin = A0;
+int tx_pin = 1;
+
+void setup() {
+    pinMode(tx_pin, OUTPUT);      //Pin 4 provides the voltage step
+    Serial.begin(9600);
+}
+
+void loop() {
+    result = tx_rx();
+    Serial.println(result);
+}
+
+
+long tx_rx(){         // Function to execute rx_tx algorithm and return a value
+                      // that depends on coupling of two electrodes.
+                      // Value returned is a long integer.
+  int read_high;
+  int read_low;
+  int diff;
+  long int sum;
+  int N_samples = 100;    // Number of samples to take.  Larger number slows it down, but reduces scatter.
+
+  sum = 0;
+
+  for (int i = 0; i < N_samples; i++){
+   digitalWrite(tx_pin,HIGH);              // Step the voltage high on conductor 1.
+   read_high = analogRead(analog_pin);     // Measure response of conductor 2.
+   delayMicroseconds(100);                 // Delay to reach steady state.
+   digitalWrite(tx_pin,LOW);               // Step the voltage to zero on conductor 1.
+   read_low = analogRead(analog_pin);      // Measure response of conductor 2.
+   diff = read_high - read_low;            // desired answer is the difference between high and low.
+   sum += diff;                            // Sums up N_samples of these measurements.
+ }
+  return sum;
+}                       </code> </pre>
+<p style="font-size: 18px; text-align: center;"> <b> Step 3: Fix Mistakes </b> </p>
+<p style="font-size: 18px; text-align: center;"> My capacitive sensor didn't work, so I had a conversation with Kassia. My problem was that my RX pin was not on an analog pin. By putting the RX pin to A0, we were able to fix my sensor and I started measuring. Below is a video of me playing with my capacitive sensor.</p>
+<iframe width="853" height="480" src="https://www.youtube.com/embed/RjrjtXMJF-M" title="Week 6 Assignment 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p style="font-size: 18px; text-align: center;"> <b> Step 4: Gather Data </b> </p>
+<p style="font-size: 18px; text-align: center;"> The first thing I gathered was the ranges. I put the sensors as far away and as close as possible. The highest value I got was 1200 and the lowest value I recorded was -12000! This is a masssive difference if you ask me! Next, I decided to measure their distance using their ranges. By that, I mean I will masure at various lengths and see their minimum and maximum range values at the certain distances apart. You can see the lengths and results of the trials below. </p>
+<img src="C:\Users\aliso\Documents\GitHub\dFab\IMG_3166 (1) (1) (1) (1).jpg" alt="Image of the collected data." style="width: 500px; height: 500 px; transform: rotateZ(270deg);">
 
 </html>
