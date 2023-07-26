@@ -4,5 +4,590 @@
 	<title> Week 7 </title>
 </head>
 <body style="font-size: 36px; text-align: center"> Week 7: Output Devices </body>
+<p style="font-size: 18px; text-align: center;"> For today's week, we used output devices and learned how to use servos, buzzers, and various other output devices.</p>
+<hr>
+<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Use An Output Device You've
+Never Used Before </pre>
+<p style="font-size: 18px; text-align: center;"> I decided to use buzzers and I wanted to play a classic piece of music with them. I decided to copy down the Transcendental Etude No 1 by Franz Liszt but that proved to be too complex; I then decided to instead paste the  Transcendental Etude No. 6 by Franz Liszt instead. </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 1: Complete The Circuit </b> </p>
+<p style="font-size: 18px; text-align: center;"> First, I got my buzzer and attached it to ground and pin 10 on my Arduino Uno. I then attached the wires to the buzzer and my circuit was complete. </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 2: Program The Microcontroller (With ChatGPT 3.5's Help) </b> </p>
+<p style="font-size: 18px; text-align: center;"> The programming was way too advanced for my level so I decided to use Chat GPT 3.5 to help program my microcontroller. I first had to set up my buzzer using a variable and then the frequencies of the notes using hertz. I used <a   href=https://pages.mtu.edu/~suits/notefreqs.html> this website </a> to help me value the variables. With Chat GPT's help, I was able to get the buzzer to work properly! </p>
+<iframe width="320" height="560" src="https://www.youtube.com/embed/PU3C_Tak10w" title="Week 7  Assignment 1 Excerpt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p style="font-size: 18px; text-align: center"> <b> Step 3: Torture Yourself! </b> </p>
+<p style="font-size: 18px; text-align: center;"> I suddenly got bored of the one buzzer and wanted to add the chords of the piece. We do not have enough buzzers to make the complete chords, but I can split the chord into sixths or fifths! </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 4: Make Right Hand Chords </b> </p>
+<p style="font-size: 18px; text-align: center;">I got another buzzer and attached it to another ground and pin 9. I then programmed it in but the buzzers didn't work; they would not work at the same time. Here is the code so far (code only shows first chord) </p>
+<pre  style="font-size: 18px"> <code> //define buzzers
+int buzzerPin1 = 10;
+int buzzerPin2 = 9;
+
+//define note values
+const float c1 = 32.70;
+const float cS1 = 34.65;
+const float d1 = 36.71;
+const float dS1 = 38.89;
+const float e1 = 41.20;
+const float f1 = 43.65;
+const float fS1 = 46.25;
+const float g1 = 49.00;
+const float gS1 = 51.91;
+const float a1 = 55.00;
+const float aS1 = 58.27;
+const float b1 = 61.74;
+const float c2 = 65.41;
+const float cS2 = 69.30;
+const float d2 = 73.42;
+const float dS2 = 77.78;
+const float e2 = 82.41;
+const float f2 = 87.31;
+const float fS2 = 92.50;
+const float g2 = 98.00;
+const float gS2 = 103.82;
+const float a2 = 110.00;
+const float aS2 = 116.54;
+const float b2 = 123.47;
+const float c3 = 130.81;
+const float cS3 = 138.59;
+const float d3 = 146.83;
+const float dS3 = 155.56;
+const float e3 = 164.81;
+const float f3 = 174.61;
+const float fS3 = 185.00;
+const float g3 = 196.00;
+const float gS3 = 207.65;
+const float a3 = 220.00;
+const float aS3 = 233.08;
+const float b3 = 246.94;
+const float c4 = 261.63;
+const float cS4 = 277.18;
+const float d4 = 293.66;
+const float dS4 = 311.13;
+const float e4 = 329.63;
+const float f4 = 349.23;
+const float fS4 = 369.99;
+const float g4 = 392.00;
+const float gS4 = 415.30;
+const float a4 = 440.00;
+const float aS4 = 466.16;
+const float b4 = 493.88;
+const float c5 = 523.25;
+const float cS5 = 554.37;
+const float d5 = 587.33;
+const float dS5 = 622.25;
+const float e5 = 659.25;
+const float f5 = 698.46;
+const float fS5 = 739.99;
+const float g5 = 783.99;
+const float gS5 = 830.61;
+const float a5 = 880.00;
+
+void setup() {
+  pinMode(buzzerPin1,OUTPUT);
+  pinMode(buzzerPin2,OUTPUT);
+}
+
+//Excerpt of Transcendental Etude No.6 by Franz Liszt (notes blocked in chords)
+void loop() {
+  playNote(d4, 2000, buzzerPin1); 
+  playNote(aS3, 2000, buzzerPin2);
+
+  // End of the loop, restart the music
+}
+
+// Function to play a note with a given frequency and duration
+void playNote(int frequency, int duration, int buzzerPin) {
+  tone(buzzerPin, frequency, duration); // Change the pin number (10) if you're using a different pin
+  delay(duration + 50); // Add a small delay between notes for clarity
+}
+}</code> </pre>
+<p style="font-size: 18px; text-align: center;"> Since that didn't work, I had to use classes to get my buzzers to play at the same time. I also wanted to convert to classes to not use the delay function since we were not allowed to for this assignment. With the help of Chat GPT 3.5, I was able to get the code below (unchanged parts not shown). </p>
+<pre  style="font-size: 18px"> <code> //define note values
+
+class buzzerPlayer {
+public: 
+  buzzerPlayer(int pin) : buzzerPin(pin) {}
+// Function to play a note with a given frequency and duration
+void playNote(int frequency, int duration) {
+  this->frequency = frequency;
+  this->duration = duration;
+  isPlaying = true;
+  startTime = millis();
+  tone(buzzerPin, frequency, duration); // Change the pin number (10) if you're using a different pin
+  
+}
+void stopNote() {
+noTone(buzzerPin);
+isPlaying = false;
+}
+
+void update() {
+  if (isPlaying && millis() - startTime >= duration) {
+    stopNote();
+
+
+  }
+}
+
+private:
+  int buzzerPin;
+  int frequency;
+  bool isPlaying;
+  unsigned long startTime;
+  unsigned long duration;
+}; 
+
+//define buzzers
+const int buzzerPin1 = 10;
+const int buzzerPin2 = 9;
+
+//instances of buzzers for buzzers
+buzzerPlayer buzzer1(buzzerPin1);
+buzzerPlayer buzzer2(buzzerPin2);
+
+void setup() {
+  // Nothing to initialize in this example
+}
+
+//Excerpt of Transcendental Etude No.6 by Franz Liszt (notes blocked in chords)
+void loop() {
+
+  //first chord
+  buzzer1.playNote(d4, 2000); 
+  buzzer2.playNote(aS3, 2000);
+
+  //While loop to update buzzers to play the other notes //
+  while (buzzer1.isPlaying || buzzer2.isPlaying) {
+    buzzer1.update();
+    buzzer2.update();
+  }
+
+  //back to the chords
+  buzzer1.playNote(cS4, 2000); 
+  buzzer2.playNote(a3, 2000);
+
+  the rest of the chords....
+
+} </code> </pre>
+<p style="font-size: 18px; text-align: center;"> It was still bugged because the isPlaying bool was private so I added a public bool to check for the private bool; it still didn't work. I then realized that ChatGPT was using an update function in a loop which was blocking the chords from playing, so I fixed that and got it to work! The problem is, I constantly have to repeat the stop note functions, start millis, and the while loop after every chord. </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 5: Make Code Cleaner And Nicer </b> </p>
+<p style="font-size: 18px; text-align: center;"> To make the code cleaner, Chat GPT recommended that I convert all of the notes into an array and play the durations in an array as well. I then added a for loop in the void loop function to continue playing the song based on the array. I then deleted all the unecessary code and I now have one working buzzer without the need to constantly spam the same lines over and over again! Code is shown below. </p>
+<pre  style="font-size: 18px"> <code> 
+//define note frequencies
+const float aS1 = 58.27;
+const float b1 = 61.74;
+const float c2 = 65.41;
+const float cS2 = 69.30;
+const float d2 = 73.42;
+const float dS2 = 77.78;
+const float e2 = 82.41;
+const float f2 = 87.31;
+const float fS2 = 92.50;
+const float g2 = 98.00;
+const float gS2 = 103.82;
+const float a2 = 110.00;
+const float aS2 = 116.54;
+const float b2 = 123.47;
+const float c3 = 130.81;
+const float cS3 = 138.59;
+const float d3 = 146.83;
+const float dS3 = 155.56;
+const float e3 = 164.81;
+const float f3 = 174.61;
+const float fS3 = 185.00;
+const float g3 = 196.00;
+const float gS3 = 207.65;
+const float a3 = 220.00;
+const float aS3 = 233.08;
+const float b3 = 246.94;
+const float c4 = 261.63;
+const float cS4 = 277.18;
+const float d4 = 293.66;
+const float dS4 = 311.13;
+const float e4 = 329.63;
+const float f4 = 349.23;
+const float fS4 = 369.99;
+const float g4 = 392.00;
+const float gS4 = 415.30;
+const float a4 = 440.00;
+const float aS4 = 466.16;
+const float b4 = 493.88;
+const float c5 = 523.25;
+const float cS5 = 554.37;
+const float d5 = 587.33;
+const float dS5 = 622.25;
+const float e5 = 659.25;
+const float f5 = 698.46;
+const float fS5 = 739.99;
+const float g5 = 783.99;
+const float gS5 = 830.61;
+const float a5 = 880.00;
+const float aS5 = 932.33;
+// define notes and durations in arrays
+const float notes1[] = {d4, cS4, d4, aS3, dS4, d4, c4, aS3, gS3, dS3, g3, fS3, d4, cS4, d4, aS3, dS4, e4, f4, d4, d4, c4, aS3};
+const float notes2[] = {aS3, a3, aS3, g3, c4, aS3, fS3, g3, c3, c3, aS2, a2, aS3, a3, aS3, g3, aS3, aS3, aS3, f3, dS3, c4, d3 };
+const int durations[] = {2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,
+ 2000, 2000, 2000, 1500, 500, 2000 };
+
+const int numNotes = sizeof(notes1) / sizeof(notes1[0]);
+
+class buzzerPlayer {
+public: 
+  buzzerPlayer(int pin) : buzzerPin(pin), isPlaying(false), startTime(0), duration(0), currentFrequency(0)  {}
+// Function to play a note with a given frequency and duration
+void playNote(float frequency, int duration) {
+  this->currentFrequency = frequency;
+  this->duration = duration;
+  isPlaying = true;
+  startTime = millis();
+  tone(buzzerPin, currentFrequency); // Change the pin number (10) if you're using a different pin
+  
+}
+void stopNote() {
+noTone(buzzerPin);
+isPlaying = false;
+}
+
+void update() {
+  if (isPlaying && millis() - startTime >= duration) {
+    stopNote();
+  }
+}
+
+bool isNotePlaying() {
+return isPlaying;
+}
+
+private:
+  int buzzerPin;
+  int currentFrequency;
+  bool isPlaying;
+  unsigned long startTime;
+  unsigned long duration;
+}; 
+
+//define buzzers
+const int buzzerPin1 = 10;
+const int buzzerPin2 = 9;
+
+//instances of buzzers for buzzers
+buzzerPlayer buzzer1(buzzerPin1);
+buzzerPlayer buzzer2(buzzerPin2);
+
+void setup() {
+  // Nothing to initialize in this example
+}
+
+//Excerpt of Transcendental Etude No.7 by Franz Liszt (notes blocked in chords)
+void loop() {
+  for (int i = 0; i < numNotes; i++) {
+    buzzer1.playNote(notes1[i], durations[i]);
+    buzzer2.playNote(notes2[i], durations[i]);
+
+    while (buzzer1.isNotePlaying() || buzzer2.isNotePlaying()) {
+      buzzer1.update();
+      buzzer2.update();
+
+    }
+  }
+} </code> </pre>
+<p style="font-size: 18px; text-align: center"> <b> Step 6: Replace The Tone Function </b> </p>
+<p style="font-size: 18px; text-align: center;"> My second buzzer doesn't work because the tone function only works for one pin. To get my program to work, I will need to use buzzer two on the analog write function. After a Chat GPT chat, my code successfully got the two buzzers to work (although I need to use delay). Code is shown below. </p>
+<pre  style="font-size: 18px"> <code> 
+//define note frequencies
+const float aS1 = 58.27;
+const float b1 = 61.74;
+const float c2 = 65.41;
+const float cS2 = 69.30;
+const float d2 = 73.42;
+const float dS2 = 77.78;
+const float e2 = 82.41;
+const float f2 = 87.31;
+const float fS2 = 92.50;
+const float g2 = 98.00;
+const float gS2 = 103.82;
+const float a2 = 110.00;
+const float aS2 = 116.54;
+const float b2 = 123.47;
+const float c3 = 130.81;
+const float cS3 = 138.59;
+const float d3 = 146.83;
+const float dS3 = 155.56;
+const float e3 = 164.81;
+const float f3 = 174.61;
+const float fS3 = 185.00;
+const float g3 = 196.00;
+const float gS3 = 207.65;
+const float a3 = 220.00;
+const float aS3 = 233.08;
+const float b3 = 246.94;
+const float c4 = 261.63;
+const float cS4 = 277.18;
+const float d4 = 293.66;
+const float dS4 = 311.13;
+const float e4 = 329.63;
+const float f4 = 349.23;
+const float fS4 = 369.99;
+const float g4 = 392.00;
+const float gS4 = 415.30;
+const float a4 = 440.00;
+const float aS4 = 466.16;
+const float b4 = 493.88;
+const float c5 = 523.25;
+const float cS5 = 554.37;
+const float d5 = 587.33;
+const float dS5 = 622.25;
+const float e5 = 659.25;
+const float f5 = 698.46;
+const float fS5 = 739.99;
+const float g5 = 783.99;
+const float gS5 = 830.61;
+const float a5 = 880.00;
+const float aS5 = 932.33;
+// define notes and durations in arrays
+// define notes and durations in arrays
+const float notes1[] = {d4, cS4, d4, aS3, dS4, d4, c4, aS3, gS3, dS3, g3, fS3, d4, cS4, d4, aS3, dS4, e4, f4, d4, d4, c4, aS3};
+const float notes2[] = {aS3, a3, aS3, g3, c4, aS3, fS3, g3, c3, c3, aS2, a2, aS3, a3, aS3, g3, aS3, aS3, aS3, f3, dS3, c4, d3 };
+const int durations[] = {2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,
+ 2000, 2000, 2000, 1500, 500, 2000 };
+
+const int numNotes = sizeof(notes1) / sizeof(notes1[0]);
+
+// Define the buzzer pins
+const int buzzerPin1 = 10;
+const int buzzerPin2 = 9;
+
+void playNote1(float frequency, int duration) {
+  tone(buzzerPin1, frequency, duration);
+}
+
+void playNote2(float frequency, int duration) {
+  int period = 1000000 / frequency;
+  int pulseDuration = period / 2;
+  int numPulses = frequency * duration / 1000;
+  for (int i = 0; i < numPulses; i++) {
+    digitalWrite(buzzerPin2, HIGH);
+    delayMicroseconds(pulseDuration);
+    digitalWrite(buzzerPin2, LOW);
+    delayMicroseconds(pulseDuration);
+  }
+}
+
+void setup() {
+  pinMode(buzzerPin1, OUTPUT);
+  pinMode(buzzerPin2, OUTPUT);
+}
+
+void loop() {
+  for (int i = 0; i < numNotes; i++) {
+    playNote1(notes1[i], durations[i]);
+    playNote2(notes2[i], durations[i]);
+    delay(durations[i - 1000]); // Add a small delay between notes
+  }
+} </code> </pre>
+<p style="font-size: 18px; text-align: center"> <b> Step 7: Torture Yourself Even More! </b> </p>
+<p style="font-size: 18px; text-align: center;"> Time to make the left hand! </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 8: Get the third buzzer to work! </b> </p>
+<p style="font-size: 18px; text-align: center;"> I added a third playnote function and used analog write to get it to work but nothing happened. The buzzer just won't work. I played around with delays but the other two buzzers just adopted the delay of the third buzzer and stopped the third buzzer from working. </p>
+<p style="font-size: 18px; text-align: center"> <b> Step 9: Take The L </b> </p>
+<p style="font-size: 18px; text-align: center;"> After three hours of trying, I decided that I need to move on because everything I try, the other two buzzers imitate and the third one does not work. I will not bother coming back to this project unlike the week 3 project because I need to move on to other projects to make enough time for my final project prep. Below is the final code with third buzzer (left hand) things commented out and the video of the two buzzers (right hand simplified) working properly.</p>
+<pre  style="font-size: 18px"> <code> 
+	//define note frequencies
+const float d1 = 36.71;
+const float dS1 = 38.89;
+const float f1 = 43.65;
+const float fS1 = 46.25;
+const float g1 = 49.00;
+const float aS1 = 58.27;
+const float b1 = 61.74;
+const float c2 = 65.41;
+const float cS2 = 69.30;
+const float d2 = 73.42;
+const float dS2 = 77.78;
+const float e2 = 82.41;
+const float f2 = 87.31;
+const float fS2 = 92.50;
+const float g2 = 98.00;
+const float gS2 = 103.82;
+const float a2 = 110.00;
+const float aS2 = 116.54;
+const float b2 = 123.47;
+const float c3 = 130.81;
+const float cS3 = 138.59;
+const float d3 = 146.83;
+const float dS3 = 155.56;
+const float e3 = 164.81;
+const float f3 = 174.61;
+const float fS3 = 185.00;
+const float g3 = 196.00;
+const float gS3 = 207.65;
+const float a3 = 220.00;
+const float aS3 = 233.08;
+const float b3 = 246.94;
+const float c4 = 261.63;
+const float cS4 = 277.18;
+const float d4 = 293.66;
+const float dS4 = 311.13;
+const float e4 = 329.63;
+const float f4 = 349.23;
+const float fS4 = 369.99;
+const float g4 = 392.00;
+const float gS4 = 415.30;
+const float a4 = 440.00;
+const float aS4 = 466.16;
+const float b4 = 493.88;
+const float c5 = 523.25;
+const float cS5 = 554.37;
+const float d5 = 587.33;
+const float dS5 = 622.25;
+const float e5 = 659.25;
+const float f5 = 698.46;
+const float fS5 = 739.99;
+const float g5 = 783.99;
+const float gS5 = 830.61;
+const float a5 = 880.00;
+const float aS5 = 932.33;
+// define notes and durations in arrays
+// define notes and durations in arrays
+const float notes1[] = { d4, cS4, d4, aS3, dS4, d4, c4, aS3, gS3, dS3, g3, fS3, d4, cS4, d4, aS3, dS4, e4, f4, d4, d4, c4, aS3 };
+const float notes2[] = { aS3, a3, aS3, g3, c4, aS3, fS3, g3, c3, c3, aS2, a2, aS3, a3, aS3, g3, aS3, aS3, aS3, f3, dS3, c4, d3 };
+// const float notes3[] = { g1, aS2, g3, d4, g3, aS2, g1, a2, g3, cS4, g3, aS2, g1, aS2, g3, d4, g3, aS2, g1, g2, d3, aS3, d3, 
+g2, g1, c3, g3, dS4, g3, c3, g1, aS2, g3, d4, g3, aS2, d1, a2, fS3, c4, fS3, a2, dS1, g2, c3, aS3, dS3, g2, dS1, dS2, c3, aS3, 
+c3, dS2, dS1, c2, a2, dS3, a2, c2, d1, d2, aS2, g3, aS2, d2, d1, d2, a2, fS3, a2, d2, g1, aS2, g3, d4, g3, aS2, g1, a2, g3, 
+cS4, g3, a2, g1, aS2, g3, d4, g3, aS2, g1, g2, d3, aS3, d3, g2, fS1, aS2, fS3, dS4, fS3, aS2, fS1, cS2, aS3, e4, aS3, cS2,
+ f1, d3, aS3, f4, aS4, d3, f1, aS2, d3, d4, d3, aS2, f1, a2, dS3, c4, dS3, a2, aS1, f2, aS2, f3, aS3, f3, aS2, f2, aS1 };
+const int durations[] = { 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,
+ 2000, 2000, 2000, 2000, 1500, 500, 2000 };
+
+// const float duration2[] = { 16667, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+ 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+  166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+   166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+    166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+     166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+      166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+       166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67,
+        166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 166.67, 111.11, 111.11, 111.11, 111.11, 111.11,
+         111.11, 111.11, 111.11, 111.11 };
+
+const int numNotes = sizeof(notes1) / sizeof(notes1[0]);
+
+// Define the buzzer pins
+const int buzzerPin1 = 10;
+const int buzzerPin2 = 9;
+// const int buzzerPin3 = 8;
+
+void playNote1(float frequency, int duration) {
+  tone(buzzerPin1, frequency, duration);
+}
+
+void playNote2(float frequency, int duration) {
+  int period = 1000000 / frequency;
+  int pulseDuration = period / 2;
+  int numPulses = frequency * duration / 1000;
+  for (int i = 0; i < numPulses; i++) {
+    digitalWrite(buzzerPin2, HIGH);
+    delayMicroseconds(pulseDuration);
+    digitalWrite(buzzerPin2, LOW);
+    delayMicroseconds(pulseDuration);
+  }
+}
+
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println(numNotes);
+  pinMode(buzzerPin1, OUTPUT);
+  pinMode(buzzerPin2, OUTPUT);
+  pinMode(buzzerPin3, OUTPUT);
+}
+
+void loop() {
+  for (int i = 0; i < numNotes; i++) {
+    playNote1(notes1[i], durations[i]);
+    playNote2(notes2[i], durations[i]);
+    // playNote3(notes3[i], duration2[i]);
+  }
+}
+</code> </pre>
+<iframe width="320" height="560" src="https://www.youtube.com/embed/2c59iwO_Cdc" title="Week 7 Assignment 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<hr>
+<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 2: Program A Microcontroller
+For Input And Output Devices </pre>
+<p style="font-size: 18px; text-align: center;"> For this assignment, we needed to program an input and output device using a microcontroller. I decided to use a ultrasonic sensor and a buzzer. My idea is to make the buzzer play a sound when the sensor has an error occurance.</p>
+<p style="font-size: 18px; text-align: center"> <b> Step 1: Complete The Circuit </b> </p>
+<p style="font-size: 18px; text-align: center;"> I attached my wires onto my arduino and placed my ultrasonic sensor to my breadboard; I attached my buzzer to GND and pin 11, and the ultrasonic sensor is attached to GND, 5V, and pin 9 for trigPin and 10 for echoPin.</p>
+<img src=".\IMG_3246 (1) (1) (1).jpg" alt="Finished Circuit." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center"> <b> Step 2: Program The Circuit </b> </p>
+<p style="font-size: 18px; text-align: center;"> For my programming, it once again proved too advanced for my level of programming (I clearly need to learn more programming myself). So, I went onto google and found some Arduino code for my project <a   href=https://create.arduino.cc/editor/mertarduinotech/b7022e05-f709-4003-b2a7-5c487ee25007/preview/> that you can find with this link. </a>  The only edit I did was to remove all LED code since I'm not using an LED in my project. My project worked and you can see it working with the video below; code is also shown below.</p>
+<pre  style="font-size: 18px"> <code> 
+	// defines pins numbers
+const int trigPin = 9;
+const int echoPin = 10;
+const int buzzer = 11;
+
+// defines variables
+long duration;
+int distance;
+int safetyDistance;
+
+
+void setup() {
+pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+pinMode(buzzer, OUTPUT);
+Serial.begin(9600); // Starts the serial communication
+}
+
+
+void loop() {
+// Clears the trigPin
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+
+// Sets the trigPin on HIGH state for 10 micro seconds
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+
+// Reads the echoPin, returns the sound wave travel time in microseconds
+duration = pulseIn(echoPin, HIGH);
+
+// Calculating the distance
+distance= duration*0.034/2;
+
+safetyDistance = distance;
+if (safetyDistance <= 5){
+  digitalWrite(buzzer, HIGH);
+}
+else{
+  digitalWrite(buzzer, LOW);
+}
+
+// Prints the distance on the Serial Monitor
+Serial.print("Distance: ");
+Serial.println(distance);
+}
+</code> </pre>
+<iframe width="853" height="480" src="https://www.youtube.com/embed/zsT7JrIt9Pc" title="Sensor Buzzer Week 7 Assignment 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<hr>
+<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 3: Find Time Domain Of Output Device
+Using An Oscilloscope </pre>
+<p style="font-size: 18px; text-align: center;"> I decided to find the time domain of my week 7 assignment one buzzer one . I noticed that my waves vary on movement depending on the notes. For example, on the first note, the waves are very stable, but when you move on to the second note, the waves move drastically. The domain is 4.00 ms and the time domain is 0.471 ms. Here is a video and image of me using the oscilloscope.</p>
+<img src=".\Oscilloscope.jpg" alt="Using the oscilloscope." style="width: 500px; height: 500 px;">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/i95MuAZx7Zk" title="Week 7 Assignment 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<hr>
+<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 4: Prepare CNC Files For Next Week </pre>
+<p style="font-size: 18px; text-align: center;"> For the next assignment, we had to make files for CNC milling for next week. I plan on 3d printing my cast mold but I do need to make a CNC milling file.</p>
+<p style="font-size: 18px; text-align: center"> <b> Step 1: Make CNC File </b> </p>
+<p style="font-size: 18px; text-align: center;"> I decided to make a crown as my CNC file. I drew it up in Fusion and you can see the dimensions and the body below.</p>
+<img src=".\crownDimensions.png" alt="Crown Dimensions." style="width: 500px; height: 500 px;">
+<img src=".\crownBody.png" alt="Crown Body." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center"> <b> Step 2: Make Molding And Casting File </b> </p>
+<p style="font-size: 18px; text-align: center;"> I decided to make an amulet object for molding and casting. I drew up the object and you can see the dimensions and various photos below.</p>
+<img src=".\amuletDimensions.png" alt="Amulet Dimensions." style="width: 500px; height: 500 px;">
+<img src=".\amuletIsometricView.png" alt="Amulet Isometric View." style="width: 500px; height: 500 px;">
+<img src=".\amuletTopView.png" alt="Amulet Top View." style="width: 500px; height: 500 px;">
+<img src=".\amuletRightHandSideView.png" alt="Amulet Right Hand Side View." style="width: 500px; height: 500 px;">
 
 </html>
