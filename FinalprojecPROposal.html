@@ -5,18 +5,34 @@
 </head>
 <body style="font-size: 36px; text-align: center"> The Final Project </body>
 <br>
-<p style="font-size: 18px"> Before I can design all of the parts, I need to create a list of materials, timeline, and project goals. But you also need to knomw what my final project is. <br> If you have seen my final project ideas website, you know my 3 ideas, out of the 3, I chose the first one (the remote-controlled ant). I decided this because my main goal is to learn how to remotely control two ESP32-Xiaos. For my timeline, I plan on finishing the modeling in 2 days, consrtucting, 3D printing, programming, debugging, and fizing my ant in 4 days, and assembling in one day, giving me enough time to prepare for the final project fair. Here is a list of mats:
+<hr>
+<pre style="text-size: 24px; text-align: center; color:darkblue; "> Trailer video </pre>
+<iframe width="853" height="480" src="https://www.youtube.com/embed/T4o9rIik9ps" title="The Ant (PHYS S-12 Final Project)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<hr>
+<p style="font-size: 18px"> Before I can design all of the parts, I need to create a list of materials, timeline, and project goals. But you also need to know what my final project is. <br> If you have seen my final project ideas website, you know my 3 ideas, out of the 3, I chose the first one (the remote-controlled ant). I decided this because my main goal is to learn how to remotely control two ESP32-Xiaos. For my timeline, I plan on finishing the modeling in 2 days, consrtucting, 3D printing, programming, debugging, and fixing my ant in 4 days, and assembling in one day, giving me enough time to prepare for the final project fair. <br> <br> <b> Here is a list of mats: <br>
 <br>
-6 servos
+2 servos 
 <br>
-6 3d printed legs
+3 3d printed legs </b> <br>(In the first part of documentation, my plan was to have six legs; explanation of why I finalized to 3 legs will be in documentation.)
+<br> <b>
+1 main chassis </b> <br> (See documentation for dimensions.)
+<br> <b>
+2 ESP32S2s </b> <br>(In first two thirds of documentation, I used an ESP32 XIAO and an ESP32S2, but I eventually switched to ESP32S2s; explanation will be given in lower documentation.)
+<br> <b>
+13 wires </b> <br>(Have extra in case it is needed.)
+<br> <b>
+3 1.5v batteries
 <br>
-1 main chassis
+1 AA battery holder
 <br>
-2 ESP32-Xiaos
+1 button
 <br>
-Unnumbered amount of wires
-<br>
+1 cable adapter </b> <br>(To hook up ESP32S2s to your computer for programming.)
+<br> <b>
+1 solderless breadboard
+<br> 
+5 small pieces of double sided tape
+<br> <br> </b>
 Below is an image of what I expect the final project to look like, along with some details of how it operates and my logic behind the project. </p>
 <img src=".\antBrainstorm.jpg" alt="Brainstorm of my final project." style="width: 500px; height: 500 px;">
 <p style="font-size: 18px"> After some more brainstorming, I decided to cut the legs down to 4 and make a quadruped. Not only will this be easier on me, it will also take less 3D printing since many people have started hogging up the 3D printers for their assignments. I was inspired by <a   href=https://www.instructables.com/A-Servo-based-4-legged-Walker/> this person's project </a> and you can see his/her video demo below.
@@ -24,15 +40,377 @@ Below is an image of what I expect the final project to look like, along with so
 	<source src=".\antInspiration.webm" type="video/webm"> 
 </video>
 <hr>
-<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 1:Set Up Servos </pre>
+<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 1: Set Up Servos </pre>
 <p style="font-size: 18px; text-align: center;"> <b> Step 1: Complete The Circuit For Servos </b> </p>
-<p style="font-size: 18px"> First, I needed to get the remote controls working.  </p>
+<p style="font-size: 18px"> First, I needed to get the servos working. I hooked up a servo to GND, 3V3, and a pin to a breadboard and the ESP32S2. </p>
+<img src=".\servoCircuit.jpg" alt="Finished Servo Circuit." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Program The Microcontroller </b> </p>
+<p style="font-size: 18px"> My next step was to program the microcontroller. I decided to first get some example code from <a   href=https://esp32io.com/tutorials/esp32-servo-motor> this website </a> as a base for my walking code. The code worked and my servo started moving. </p>
+<video width='500px' height='500px' autoplay muted loop> 
+	<source src=".\workingServo.mp4" type="video/mp4"> 
+</video>
+<p style="font-size: 18px"> I then hooked up both servos and added a second servo with a second servo write and now both work. Check out the code below the video. </p>
+<video width='500px' height='500px' autoplay muted loop> 
+	<source src=".\2ServosWorking.mp4" type="video/mp4"> 
+</video>
+<pre  style="font-size: 18px"> <code> #include (<)[ESP32Servo.h](>)
+#define SERVO_PIN 19 // ESP32 pin GPIO26 connected to servo motor
+#define SERVO_PIN2 33
+Servo servoMotor;
+Servo servoMotor2;
+void setup() {
+  servoMotor.attach(SERVO_PIN);  // attaches the servo on ESP32 pin
+  servoMotor2.attach(SERVO_PIN2);
+}
 
+void loop() {
+  // rotates from 0 degrees to 180 degrees
+  for (int pos = 0; pos <= 180; pos += 1) {
+    // in steps of 1 degree
+    servoMotor.write(pos);
+    servoMotor2.write(pos);
+    delay(15); // waits 15ms to reach the position
+  }
 
+  // rotates from 180 degrees to 0 degrees
+  for (int pos = 180; pos >= 0; pos -= 1) {
+    servoMotor.write(pos);
+    servoMotor2.write(pos);
+    delay(15); // waits 15ms to reach the position
+  }
+}</code> </pre>
 <hr>
 <pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 2: Design And Print The Chassis </pre>
-
+<p style="font-size: 18px"> Time to get a working chassis! </p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Get Servo Measurements </b> </p>
+<p style="font-size: 18px"> I got some calipers and got to measuring. My measurements are shown below. </p>
+<img src=".\servoMeasurements.jpg" alt="Servo measurments." style="width: 500px; height: 500 px; transform: rotateZ(270deg);">
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Design The Chassis </b> </p>
+<p style="font-size: 18px"> I opened a Fusion 360 document and got to chassis designing. I sketched out a rectangle and extruded it without extruding two rectangular sized pieces that will be where I place my servos. I then made two holes for the nails and cut them out. See the model below. (Nail holes not shown; the model won't render them on the website because of how small they are. Apologies for the inconvenience.) </p>
+<br>
+<img src=".\antChassisSketch.png" alt="Chassis measurements." style="width: 500px; height: 500 px; transform: rotateZ(360deg);">
+<br>
+<iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c99afe31c60fa79d90f?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+<p style="font-size: 18px; text-align: center;"> <b> Step 3: Print The Chassis </b> </p>
+<p style="font-size: 18px"> Time to 3d Print! Or is it? My prints kept on failing so I ended up laser cutting my chassis; after all, it's literally just a square with two rectangular holes and two circular holes. So, I laser cutted the chassis and got to assembling!</p>
 <hr>
-<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 3: Assemble And Setup Remote Controls. </pre>
-</html>
+<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 3: Assemble The Ant </pre>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Attach Servos To The Chassis </b> </p>
+<p style="font-size: 18px"> I placed my servos into their spots; they fit perfectly. Then, I screwed two nails through the holes for each servo and my servos are now securely attached!</p>
+<br>
+<img src=".\.5AssembledChassis.jpg" alt="Chassis half assembled." style="width: 500px; height: 500 px;">
+<br>
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Attach Circuitry To The Chassis </b> </p>
+<p style="font-size: 18px"> Next, I placed the circuitry onto my ant. I taped the breadboard on the servos and stuck the ESP32S2 to the side of the breadboard. I got a three pack battery and taped it on my breadboard to get the servos working. Now, I just need to get some legs. I tried to use some bendable wires but I soon realized that those will absolutely not keep balance; the only option I had was to design some leg parts and 3D print them.</p>
+<img src=".\IMG_3300 (1) (1) (1) (1).jpg" alt="Fully assembled chassis." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; text-align: center;"> <b> Step 3: Design Some Legs </b> </p>
+<p style="font-size: 18px"> I opened another Fusion 360 document and designed my legs. Once again, I made a random rectangle and that became my leg.</p>
+<br>
+<img src=".\Screenshot 2023-07-28 225846.png" alt="Dimensions of leg." style="width: 500px; height: 500 px;">
+<br>
+<iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c99b4b3a1987d975f59?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+<p style="font-size: 18px"> As I was 3D printing my legs, I also decided to make a rectangle with a triangular base because I thought it would help with sliding for the ant; model is shown below.</p>
+<iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c995918dc98e7041a34?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+<br>
+<img src=".\legs.jpg" alt="Legs." style="width: 500px; height: 500 px;">
+<br>
+<p style="font-size: 18px; text-align: center;"> <b> Step 4: Try Out The Legs </b> </p>
+<p style="font-size: 18px"> Now, I hot glue the legs and decide which ones are better. Or do I? 
+<p style="font-size: 18px; text-align: center;"> <b> Step 5: Who Needs Legs? </b> </p>
+<p style="font-size: 18px"> Apparently, the hot glue gun is missing and the small hot glue guns don't have enough space for the big hot glue sticks, so I had no option to stick my legs on. I am certain tape would not work (because of ground friction dragging the leg off the servo). The only option I have is to remodel the legs to include a press-fit design but that will take up an extra two hours; that's time I cannot afford to lose. So, I decided to have a legless ant that just slides around everywhere. Or did I?</p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 6: I Need Legs. </b> </p>
+<p style="font-size: 18px"> I really need the legs to help maintain balance. I need to get three degrees of movement, not two. To achieve this, I need to use three legs and three legs only, otherwise, the ant will become too unbalanced to move. So, I taped three white legs horizontally and the ant managed to balance and move!</p>
+<video width='500px' height='500px' autoplay muted loop> 
+	<source src=".\antWalking.mp4" type="video/mp4"> 
+</video>
+<hr>
+<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 4: Setup Remote Controls </pre>
+<p style="font-size: 18px"> I decided to have one button for now that powers the servos to move. I may add more buttons but for now, my main goal is just to have one working button.</p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 1: Complete The Circuit For The Button </b> </p>
+<p style="font-size: 18px"> I attached a button to GND and D1 on the ESP32 Xiao; that's it.</p>
+<p style="font-size: 18px; text-align: center;"> <b> Step 2: Program The ESP32 Xiao </b> </p>
+<p style="font-size: 18px"> Now, I first needed to get my MAC addresses of my ESP's. I used the code below to get my MAC addresses.</p>
+<pre  style="font-size: 18px"> <code> #include "WiFi.h"
+
+void setup(){
+  Serial.begin(115200);
+  WiFi.mode(WIFI_MODE_STA);
+  Serial.println(WiFi.macAddress());
+} </code> </pre>
+<p style="font-size: 18px"> I recorded the MAC addresses down and then used this  <a   href=https://randomnerdtutorials.com/esp-now-esp32-arduino-ide/> Random Nerd Tutorials webpage </a> to help program my ESPs. My first goal was to get a message to send before implementing the servos. The code for the sender (Xiao) is above the reciever (ESP32S2) code. </p>
+<pre  style="font-size: 18px"> Sender Code: <code> 
+	/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+#include (<)esp_now.h(>)
+#include (<)WiFi.h(>)
+
+// REPLACE WITH YOUR RECEIVER MAC Address
+uint8_t broadcastAddress[] = {0x70, 0x04, 0x1D, 0xFB, 0x35, 0x9A};
+
+// Structure example to send data
+// Must match the receiver structure
+typedef struct struct_message {
+  bool d;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+esp_now_peer_info_t peerInfo;
+
+// callback when data is sent
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+ 
+void setup() {
+  // Init Serial Monitor
+  Serial.begin(115200);
+ 
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+
+  // Once ESPNow is successfully Init, we will register for Send CB to
+  // get the status of Trasnmitted packet
+  esp_now_register_send_cb(OnDataSent);
+  
+  // Register peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+  peerInfo.channel = 0;  
+  peerInfo.encrypt = false;
+  
+  // Add peer        
+  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+ 
+void loop() {
+  // Set values to send
+  myData.d = true;
+  
+  // Send message via ESP-NOW
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+   
+  if (result == ESP_OK) {
+    Serial.println("Sent with success");
+  }
+  else {
+    Serial.println("Error sending the data");
+  }
+  delay(2000);
+}</code> </pre>
+<pre  style="font-size: 18px"> Receiver Code: <code> 
+	/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+#include (<)esp_now.h(>)
+#include (<)WiFi.h(>)
+
+// Structure example to receive data
+// Must match the sender structure
+typedef struct struct_message {
+    bool d;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+// callback function that will be executed when data is received
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
+  memcpy(&myData, incomingData, sizeof(myData));
+  Serial.print("Bytes received: ");
+  Serial.print("Bool: ");
+  Serial.println(myData.d);
+  Serial.println();
+}
+ 
+void setup() {
+  // Initialize Serial Monitor
+  Serial.begin(115200);
+  
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  
+  // Once ESPNow is successfully Init, we will register for recv CB to
+  // get recv packer info
+  esp_now_register_recv_cb(OnDataRecv);
+}
+ 
+void loop() {
+
+}</code> </pre>
+<img src=".\Screenshot 2023-07-30 145601.png" alt="Working remote controls." style="width: 500px; height: 500 px;">
+<p style="font-size: 18px"> Next, I need to make it so that the bool changes to true when I press the button. Then, I need to have the ESP32S2 only turn on the servos when the bool is true. For this, I changed the sender code by adding a button pin and made it so that the bool is false until the button is pressed. I did this by having a digital read be high when the button is not pressed. I then changed the receiver code by adding an if statement around the servo sectors to make the servos only work when my boolean value is true. I uploaded the code and was surprised to find out that my sender was not sending anything! I tried to fix it by adding serial print lines but the Xiao just won't show them! I eventually decided to switch to an ESP32S2 for my sender and the project did work, but the servos only work when I'm not pressing the button - the exact opposite thing I want to happen. To fix this, I just changed the sender if statement to digitalRead(buttonPin) == LOW and that made the project work the way I intended to! The project cycles through servo cycles so the project still runs while it's in the middle of a servo cycle, but the main components are finished! Code is shown below.</p>
+<pre  style="font-size: 18px"> Sender Code: <code> 
+	/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+#include (<)esp_now.h(>)
+#include (<)WiFi.h(>)
+
+// REPLACE WITH YOUR RECEIVER MAC Address
+uint8_t broadcastAddress[] = {0x70, 0x04, 0x1D, 0xFB, 0x35, 0x9A};
+
+// Structure example to send data
+// Must match the receiver structure
+typedef struct struct_message {
+  bool d;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+esp_now_peer_info_t peerInfo;
+
+// callback when data is sent
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+ 
+void setup() {
+  // Init Serial Monitor
+  Serial.begin(115200);
+ 
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+
+  // Once ESPNow is successfully Init, we will register for Send CB to
+  // get the status of Trasnmitted packet
+  esp_now_register_send_cb(OnDataSent);
+  
+  // Register peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+  peerInfo.channel = 0;  
+  peerInfo.encrypt = false;
+  
+  // Add peer        
+  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+ 
+void loop() {
+  // Set values to send
+  myData.d = true;
+  
+  // Send message via ESP-NOW
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+   
+  if (result == ESP_OK) {
+    Serial.println("Sent with success");
+  }
+  else {
+    Serial.println("Error sending the data");
+  }
+  delay(2000);
+}</code> </pre>
+<pre  style="font-size: 18px"> Receiver Code: <code> 
+	/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp-now-esp32-arduino-ide/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+#include (<)esp_now.h(>)
+#include (<)WiFi.h(>)
+
+// Structure example to receive data
+// Must match the sender structure
+typedef struct struct_message {
+    bool d;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+// callback function that will be executed when data is received
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
+  memcpy(&myData, incomingData, sizeof(myData));
+  Serial.print("Bytes received: ");
+  Serial.print("Bool: ");
+  Serial.println(myData.d);
+  Serial.println();
+}
+ 
+void setup() {
+  // Initialize Serial Monitor
+  Serial.begin(115200);
+  
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  
+  // Once ESPNow is successfully Init, we will register for recv CB to
+  // get recv packer info
+  esp_now_register_recv_cb(OnDataRecv);
+}
+ 
+void loop() {
+
+}</code> </pre>
+<p style="font-size: 18px"> I technically can fix the issue of the servos still in their cycle when the button is pressed, but that would be too much of a challenge. I will need to edit the code completely because if I do it with the current code, the servos will immediately jump to positon 0, which will cause a lot of strain on the servos. I tried to fix this by saving the current position of the servos while it runs, but the for loop kept on dominating the code and nothing really changed. Therefore, I have decided to keep the ant in this way.</p>
+<video width='500px' height='500px' autoplay muted loop> 
+	<source src=".\workingAnt.mp4" type="video/mp4"> 
+</video>
+<hr>
+<pre style="text-size: 24px; text-align: center; color:darkblue; "> Final Assignment Part 5: Finished. </pre>
+<p style="font-size: 18px"> And with that said, my final project is now ready for presentation on Thursday, August 3, better known as the project fair day. If you haven't already, watch the video at the very top of the webpage which shows my finished project in action!</p>
 </html>
