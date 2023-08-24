@@ -2,94 +2,140 @@
 <html>
 <head> 
 	<title> Week 3 </title>
+	<link rel="stylesheet" href="./bootstrap-5.3.1-dist/css/bootstrap.css">
+	<style>
+		[class*="col"] {
+			padding: 1rem;
+			background-color: skyblue;
+			border: 2px solid white;
+			color: white;
+		}
+	</style>
 </head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/Dfab_Pages/dFabHome.html">DFab Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+    </div>
+  </div>
+</nav>
 <body style="font-size: 36px; text-align: center"> Week 3: Electronics and Tools</body>
 <p style="font-size: 18px"> This week, we learned how to work with soldering, drill presses, and saws. In class, we learned various ways to tap using a tapper and how to drill safely and effectively. We also used automatic and manual saws to cut different objects. (This is off topic, but I also managed to saw my own piece of metal using the manual saw!) 
 </p>
-<img src=".\IMG_2974 (1) (1) (1).jpg" alt="Picture of the piece of metal that I cut." style="width: 500px; height: 500 px;">
+<img src=".\IMG_2974 (1) (1) (1).jpg" class="img-fluid" alt="Picture of the piece of metal that I cut." style="width: 500px; height: 500 px;">
 <hr>
-<pre style="text-size: 24px; text-align: center; color: royalblue;"> Trailer Video </pre>
-<iframe width="853" height="480" src="https://www.youtube.com/embed/u7I6yxJDVhc" title="The Whirling Dervish (PHYS S-12 Week 3 Kinetic Sculpture)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p style="text-size: 24px; text-align: center; color: royalblue;"> Trailer Video </p>
+<div class="ratio ratio-16x9">
+	<iframe width="853" height="480" src="https://www.youtube.com/embed/u7I6yxJDVhc" title="The Whirling Dervish (PHYS S-12 Week 3 Kinetic Sculpture)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 <hr>
-<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Creating A Kinetic Sculpture </pre>
+<p style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Creating A Kinetic Sculpture </p>
 <p style="font-size: 18px"> Our assignment was to make a kinetic sculpture; I was so excited, I couldn't even begin to start! I have seen multiple sculptures from artists such as Arthur Ganson and various other artists, but I just couldn't find a design! I ended up with two designs: A simple rotating object, and a flying dragon with flapping wings. I would love to make the dragon so I am going to make it! </p>
 <p style="font-size: 18px"> After a talk with Kassia, I decided what to do with my flying dragon design: I will base it slightly off the Sun Earth Moon model. In the Sun Earth Moon model, the sun is a stationary object, the Earth revolves around the sun, and the moon revolves around the Earth; I want to mimic this with gears. What I will need to do is print out a post with a gear on the bottom, paste the gear on the bottom of the Earth and get that gear to move a rod around the post (that will be the Sun Earth model and will also be how my dragon flys around). Then, I will have a rod with a gear that moves another gear on a rod; the latter gear will move a rod up and down which will flap the dragon's wings (Sun Earth and a really distorted moon model). Below is the image that Kassia and I prepared for my model.</p>
-<img src=".\Kinetic_draft.jpg" alt="The draft of my kinetic sculpture." style="width: 800px; height: 800 px;">
+<img src=".\Kinetic_draft.jpg" class="img-fluid" alt="The draft of my kinetic sculpture." style="width: 800px; height: 800 px;">
 <br>
 <p style="font-size: 18px"> After another chat with Kassia, I changed the draft of my sculpture; instead of having a rod attach to a post from a few inches away, my sculpture will involve a rack and pinion gear on a main post to help keep balance; my previous model did not have a way to balance so I scrapped it. I also then split the model into two different projects: this week's project will just having the flying dragon, and next week's project will have a flapping dragon. I did this so I can conserve time and energy and to not have to do a difficult kinetic sculpture on top of a microcontrolled project. Below is the very bad orthographic projection of the new model. (This orthographic projection has both week 3 and week 4 projects combined; do keep in mind that I still have week 3 and week 4 as separate projects.)</p>
-<img src=".\kineticSculptureV2.jpg" alt="The second draft of my kinetic sculpture." style="width: 800px; height: 800 px;">
+<img src=".\kineticSculptureV2.jpg" class="img-fluid" alt="The second draft of my kinetic sculpture." style="width: 800px; height: 800 px;">
 <p style="font-size: 18px; text-align: center"> <b> Step 1: Model the objects </b> </p>
 <p style="font-size: 18px">  The first step I decided to take was to model all of the materials I will need to make. I used the Spur gear add-in on Fusion 360 to help aid me in creating the gears. I created my two spur gears with 4.15 mm module, 14.5 degree pressure angle, and one gear with 27 teeth and the other with 12 teeth). Next, I used the <a   href=https://apps.autodesk.com/FUSION/en/Detail/Index?id=1236778940008086660> GF gear generator add-in </a> to make an internal spur gear as my circular rack (measurements were 4.15 mm module, 39 teeth, and radial thickness of 5.36 mm. </p> 
-<img src=".\gears1.png" alt="The gears" style="width: 800px; height: 800 px;">
+<img src=".\gears1.png" class="img-fluid" alt="The gears" style="width: 800px; height: 800 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c998c4d130b92fabcab?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px"> After I modeled the gears, I made the main supporting platform (with 254 mm diameter and 3 holes to support the legs). </p>
-<img src=".\mainPlatform.png" alt="Main platform with measurements" style="width: 800px; height: 800 px;">
+<img src=".\mainPlatform.png" class="img-fluid" alt="Main platform with measurements" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px;"> Next, I made the legs. I made a rectangle first and then made another rectangle on top of the created rectangle; I filleted the back side of the top rectangle. (Thickness was 3.15 mm for cardboard and 6.15 mm for wood and kerf was 1.00 mm.) </p> 
-<img src=".\sculptureLegs.png" alt="Platform legs with measurments" style="width: 800px; height: 800 px;">
+<img src=".\sculptureLegs.png" class="img-fluid" alt="Platform legs with measurments" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px;"> Finally, I brought them all together in an assembly. </p>
-<img src=".\IMG_3012[1].jpg" alt="The assembly of the support (gears are not in the right place)." style="width: 800px; height: 800 px;">
+<img src=".\IMG_3012[1].jpg" class="img-fluid" alt="The assembly of the support (gears are not in the right place)." style="width: 800px; height: 800 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c9931635ed4214ea33a?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px; text-align: center"> <b> Step 2: Cut the pieces </b> </p>
 <p style="font-size: 18px">  I then went to the laser cutter and then cut out the pieces, first in cardboard, and then in wood. </p>
-<img src=".\IMG_3050[1].jpg" alt="Cutting cardboard" style="width: 800px; height: 800 px;">
-<img src=".\IMG_3053[1].jpg" alt="Cutting wood" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3050[1].jpg" class="img-fluid" alt="Cutting cardboard" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3053[1].jpg" class="img-fluid" alt="Cutting wood" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px; text-align: center"> <b> Step 3: Assemble! </b> </p>
 <p style="font-size: 18px">  I then attached a motor to a heat shrinked wood axle and attached it to my gear. Sadly, it didn't work. Then, I tried to attach the axle with hot glue and tape but that didn't work too. At this point, I completely ran out of time and so my kinetic sculpture sadly failed. I think that if I was able to 3d print a connector for the axle and the motor, it would have worked. Below is the video of how my sculpture would have worked. </p> 
 <iframe width="320" height="560" src="https://www.youtube.com/embed/lXFK3fETvPw" title="kinetic sculpture mechanism" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
 <br>
-<img src=".\IMG_3048[1].jpg" alt="mats" style="width: 800px; height: 800 px;">
-<img src=".\IMG_3051[1].jpg" alt="the set motor" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3048[1].jpg" class="img-fluid" alt="mats" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3051[1].jpg" class="img-fluid" alt="the set motor" style="width: 800px; height: 800 px;">
 
 <hr>
-<pre style="text-size: 24px; text-align: center; color: darkred;"> Assignment 1.5: Trying To Get My Sculpture To Work </pre>
+<p style="text-size: 24px; text-align: center; color: darkred;"> Assignment 1.5: Trying To Get My Sculpture To Work </p>
 <p style="font-size: 18px"> <a   href=https://ac99-89.github.io/dFab/week5.html> Now that I have my 3d printed connector for my motor and my axle, </a> I will reattempt my kinetic sculpture. Because of time constraints, I will only try to get the dragon revolving mechanism to work which means no more wing flapping. I'm already late on week 3 and I can't work on week 4 until I finish my week 3 project, so let's make it easier on me.</p> 
 <p style="font-size: 18px; text-align: center;"> <b> Step 4: Remodeling the gears </b> </p> 
 <p style="font-size: 18px">  The first thing I decided to do was to remodel the gears because I had an extremely big design flaw in my previous gears. The problem with the old gears was that they would not mesh with the circular rack gear. To fix this, I did two things: I changed my mindset by trying to make a planetary gear system, and having fifty one teeth on my inner ring (circular rack) instead of thirty nine.</p>
 <p style="font-size: 18px; text-align: center;"> <b> Why did I do such a thing? </b> </p> 
 <p style="font-size: 18px">  Great that you asked! I changed my mindset to a planetary gear system because it made more sense. My mechanism was based on moving little gear around a ring by powering a motor on a big gear which is literally what a planetary gear system is. The reason why I changed the amount of teeth in my rack is due to the planetary gear mesh formula. The formula states the teeth on the inner ring (my circular rack) must equal the amount of teeth on my sun gear (my 27 teeth gear) + 2 * the amount of teeth on my driven gear (the 12 teeth gear). My problem is that 39 does not equal 27 + 2* 12; the formula equals 51! Therefore, I added 18 extra teeth on my gear to satisfy the formula. I did those remodifications and my gears work way better! I also made a square 4x4 mm hole in my sun gear to fit my axle in perfectly.</p>
-<img src=".\gears2.png" alt="the remodified gears" style="width: 800px; height: 800 px;">
+<img src=".\gears2.png" class="img-fluid" alt="the remodified gears" style="width: 800px; height: 800 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c9905d35e963ce1bcaf?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px; text-align: center;"> <b> Step 5: Create a motor mount </b> </p> 
 <p style="font-size: 18px">  One of the problems with the sculpture is that the motor itself spins as the axle spins. This causes the wires to get tangled together and causes the axle to fall off quicker. I went to Fusion 360 and first created a rectangle and made 4 mm holes offset by 14 mm in a zigzag format as my mount base.</p> 
-<img src=".\motorMount.png" alt="motor mount body" style="width: 800px; height: 800 px;">
+<img src=".\motorMount.png" class="img-fluid" alt="motor mount body" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px">  Then, I designed the motor mount legs. I made another rectangle; that's literally it, I used the measurment from the holes to make the dimensions.</p> 
-<img src=".\motorMountLegs.png" alt="motor mount legs" style="width: 800px; height: 800 px;">
+<img src=".\motorMountLegs.png" class="img-fluid" alt="motor mount legs" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px">  I laser cutted the parts but the legs didn't work because I didn't account for the thickness. Instead, I decided to drill two holes into my main base and screw in two m40 screws through the motor and the platform and that managed to keep my motor in place!</p>
-<img src=".\IMG_3101[1] (1) (1).jpg" alt="motor mount in place" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3101[1] (1) (1).jpg" class="img-fluid" alt="motor mount in place" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px; text-align: center;"> <b> Step 6: Assembly (again) </b> </p>
 <p style="font-size: 18px"> I first cut the platform in wood to provide for a stronger base and gear platform. Then, I placed the motor and the mount in the axle hole of the gear platform to align the axle. I placed the sun gear on the axle and aligned the inner ring to have its center point directly on the axle and taped it. I then placed the new driven gear and powered the sculpture; it failed again. </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 7: Chat with the professor </b> </p>
 <p style="font-size: 18px"> I decided that at this point I will need some help from the professor. I went to him and asked him what he recommends me to do to fix my sculpture. After thouroughly showing him how the sculpture works, he concluded that my measurements were correct and that I should try to scale the driven gear down to help it fit in better. The problem with the driven gear is that it fits too well into the inner ring and the sun gear so it ends up locking itself inside. With my newfound knowledge, I set out to find the perfect scale factor for my gear. </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 8: Mass producing gears set at different scale factors </b> </p>
-<p style="font-size: 18px"> I started laser cutting the driven gear in different scale factors en masse. I tried .99, .98, .97, .96, and .95 but the gears were either too big or too small. <img src=".\IMG_3102[1] (1) (1).jpg" alt="All the gears I mass prudced thus far" style="width: 800px; height: 800 px;"> <br> Then, I decided to try out .985 and cut out the gear.   </p>
+<p style="font-size: 18px"> I started laser cutting the driven gear in different scale factors en masse. I tried .99, .98, .97, .96, and .95 but the gears were either too big or too small. <img src=".\IMG_3102[1] (1) (1).jpg" class="img-fluid" alt="All the gears I mass prudced thus far" style="width: 800px; height: 800 px;"> <br> Then, I decided to try out .985 and cut out the gear.   </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 9: The end? (Enter an end portal) </b> </p>
 <p style="font-size: 18px"> I was tired, restless, and desperate for some food (I was hungry at the time). I placed my driven gear in its position and powered the motor. I thought I was hallucinating. I rubbed my eyes viciously and looked back. The object stared at me in all glory; the driven gear was spinning in perfect condition! </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 10: You need a mint (Collect dragon's breath in a glass bottle) </b> </p>
 <p style="font-size: 18px">  <b> My kinetic sculpture actually worked! </b> Then my axle fell off my motor connector. But for 15 seconds, my sculpture actually worked! I kept on pushing the axle back into the connector but it kept on falling. I then thought that there wouldn't be anything I could really do about it, but I started thinking critically. First, I switched my m40 screws to m30, after that didn't help, I started thinking critically again. I was powering my motor with 1 volt, so I had the idea of using more voltage. I increased the voltage to 3.16 volts and started watching my sculpture to see if the axle would fall off again. </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 11: The end. (Kill the ender dragon) </b> </p>
-<p style="font-size: 18px">  My sculpture has been operating for more than 2 minutes without breaking! My sculpture is now working perfectly! <br> <iframe width="320" height="560" src="https://www.youtube.com/embed/5XHtPpA_lUw" title="Kinetic Sculpture Mechanism Working" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> <br> I have finally perfected my kinetic sculpture mechanism. Now all that is left is to make the dragon. </p>
+<p style="font-size: 18px">  My sculpture has been operating for more than 2 minutes without breaking! My sculpture is now working perfectly! <br> 
+<div class="ratio ratio-16x9">
+	<iframe width="320" height="560" src="https://www.youtube.com/embed/5XHtPpA_lUw" title="Kinetic Sculpture Mechanism Working" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div> </p>
+	<br> <p style="font-size: 18px"> I have finally perfected my kinetic sculpture mechanism. Now all that is left is to make the dragon. </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 12: The next generation (Hold the dragon egg) </b> </p>
 <p style="font-size: 18px">  Sadly all of the origami dragon tutorials were way to complex for my level so I went with a paper airplane. But then, I had another idea. In Turkish culture, there is a dance called <a   href=https://www.youtube.com/watch?v=hkuimX1bh6g> Whirling Dervishes (video by Davidsbeenhere), </a> where people dance in gowns and twirl in circles while moving. This is a perfect thing to imitate for my sculpture since it literally uses all of the main components of the dance, so I will be making whirling dervish dancers instead. </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 13: The End...Again... (Respawn the ender dragon) </b> </p>
 <p style="font-size: 18px">  My sculpture stopped working again! My axle snapped, the wires ripped off, and the motor keeps descending down the screws as if it was on a kiddie slide. At this point, I will need to move on. I am already late on all of my other assignments so I need to just consider this project unfinished. I technically got it to work so it isn't a fail, but it is time to move on with it not working. If I have free time, I will continue to work on this project and hopefully bring it to its full glory. If not, may it live long in antiquity and rest in peace in all its beauty like the late Roman Empire. </p>
-<img src=".\IMG_3109 (1) (1) (1).jpg" alt="The motor mount" style="width: 800px; height: 800 px;">
-<img src=".\IMG_3108 (1) (1) (1).jpg" alt="The broken project" style="width: 800px; height: 800 px;">
-<pre style="text-size: 24px; text-align: center; color: goldenrod;"> Assignment 1.99: I'm Not Stopping Till It Works </pre>
+<img src=".\IMG_3109 (1) (1) (1).jpg" class="img-fluid" alt="The motor mount" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3108 (1) (1) (1).jpg" class="img-fluid" alt="The broken project" style="width: 800px; height: 800 px;">
+<p style="text-size: 24px; text-align: center; color: goldenrod;"> Assignment 1.99: I'm Not Stopping Till It Works </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 14: NEVER GIVE UP! </b> </p>
 <p style="font-size: 18px">  Procrastinating on my final project, I decided to attempt the sculpture again. After all, I never give up, so I might as well try again! </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 15: Fixing the motor mount, axle, and connector </b> </p>
 <p style="font-size: 18px">  My first order of business is making sure that my axle doesn't snap again. Here is why I believe the axle broke. The axle was constantly getting sanded down by the hole of the gear post because it is the exact same size Since the axle isn't moving the gear post, it's getting sanded down by the post instead. Because of this, I first made my gear post hole bigger by drilling a random drill bit through the gear post hole. Then, I had the problem of the screws. The screws were going in diagonally, which is a problem because the whole base is then dragged to the side which causes issues. So, I took two m40 screws instead of m30 and placed three nylon washers at the back to keep it stable; I screwed the nails in until the nails were just at the surface level of the gear post. Since my axle snapped, I had to use my old axle that is thinner at the bottom. To make it more level, I sawed the bottom half off and I got a working axle again. As for the broken connector, I just made a new one. I then placed the axle into the connector and attached the connector to the motor and hoisted the entire motor mount back onto the gear post. </p>
-<img src=".\IMG_3135 (1) (1) (1).jpg" alt="The motor mount all fixed up" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3135 (1) (1) (1).jpg" class="img-fluid" alt="The motor mount all fixed up" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px; text-align: center;"> <b> Step 16: The Beginning? (Spawn The Wither) </b> </p>
 <p style="font-size: 18px"> The mechanism works again! All that is left is to making the whirling dervish! </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 17: Making My Whirling Dervish </b> </p>
-<p style="font-size: 18px"> To make the outfit, I just crumpled and folded a piece of paper until it looked like an outfit; I didn't really go that much into detail and forgot the folds I used to make it. <img src=".\4A64059A-DB8C-458E-B9A2-8F5539C08376 (1) (1) (1).jpg" alt="Making the outfit" style="width: 800px; height: 800 px;"> <img src=".\278B90FD-1B8C-4175-9BC1-AB62AE7C9D96 (1) (1) (1).jpg" alt="The outfit" style="width: 800px; height: 800 px;"> <br> But, if you fold a paper in half across each side 4 times and bring all of the edges together to make a small diamond, it should look similar to the outfit. As for the head, I cut out a small rectangle of paper and folded the edges to make a head. Next, I taped the head onto the body using double sided tape and taped a popsicle stick to the body to keep the body stuck to the  stick; I then hot glued the popsicle stick to the gear to keep the figurine on the sculpture. Now, it is time to plug in the project again.</p>
+<p style="font-size: 18px"> To make the outfit, I just crumpled and folded a piece of paper until it looked like an outfit; I didn't really go that much into detail and forgot the folds I used to make it. <img src=".\4A64059A-DB8C-458E-B9A2-8F5539C08376 (1) (1) (1).jpg" class="img-fluid" alt="Making the outfit" style="width: 800px; height: 800 px;"> <img src=".\278B90FD-1B8C-4175-9BC1-AB62AE7C9D96 (1) (1) (1).jpg" class="img-fluid" alt="The outfit" style="width: 800px; height: 800 px;"> <br> But, if you fold a paper in half across each side 4 times and bring all of the edges together to make a small diamond, it should look similar to the outfit. As for the head, I cut out a small rectangle of paper and folded the edges to make a head. Next, I taped the head onto the body using double sided tape and taped a popsicle stick to the body to keep the body stuck to the  stick; I then hot glued the popsicle stick to the gear to keep the figurine on the sculpture. Now, it is time to plug in the project again.</p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 18: The Beginning. (Kill The Wither) </b> </p>
-<p style="font-size: 18px"> <iframe width="853" height="480" src="https://www.youtube.com/embed/ZhPvVD5P_1g" title="Whirling Dervishes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> <br> My kinetic sculpture works! I learned a lot during this process, and have a COPIOUS amount of material for other projects now! I had the idea of using three gears, but the original mechanism is already hard to make, and the dervish takes up more space than I thought, so one will just do! Now, only two things are left.</p> 
-<img src=".\139FFD17-19EF-4B7F-9501-2366629FD3AF (1) (1) (1).jpg" alt="Fully assembled sculpture" style="width: 800px; height: 800 px;">
-<img src=".\IMG_3140 (1) (1) (1).jpg" alt="All the things I cut out and made for this project." style="width: 800px; height: 800 px;">
+	<div class="ratio ratio-16x9"><iframe width="853" height="480" src="https://www.youtube.com/embed/ZhPvVD5P_1g" title="Whirling Dervishes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div> <br> 
+<p style="font-size: 18px"> 
+	My kinetic sculpture works! I learned a lot during this process, and have a COPIOUS amount of material for other projects now! I had the idea of using three gears, but the original mechanism is already hard to make, and the dervish takes up more space than I thought, so one will just do! Now, only two things are left.</p> 
+<img src=".\139FFD17-19EF-4B7F-9501-2366629FD3AF (1) (1) (1).jpg" alt="Fully assembled sculpture" class="img-fluid" style="width: 800px; height: 800 px;">
+<img src=".\IMG_3140 (1) (1) (1).jpg" class="img-fluid" alt="All the things I cut out and made for this project." style="width: 800px; height: 800 px;">
 <p style="font-size: 18px; text-align: center;"> <b> Step 19: Complete The Circuit</b> </p>
-<p style="font-size: 18px"> I get an Arduino Uno and an L9110 and hook up my motor to the pin 3 of my Arduino Uno and to 1-A of the L9110. I then hooked up to 5v, the GNDs, and VCC. Then, I hooked my potentiometer to A0, A2, and A4 of my Arduino Uno. <br><img src=".\IMG_3315 (1) (1) (1).jpg" alt="Assembled microcontroller parts" style="width: 800px; height: 800 px;"><br></p>
+<p style="font-size: 18px"> I get an Arduino Uno and an L9110 and hook up my motor to the pin 3 of my Arduino Uno and to 1-A of the L9110. I then hooked up to 5v, the GNDs, and VCC. Then, I hooked my potentiometer to A0, A2, and A4 of my Arduino Uno. <br><img src=".\IMG_3315 (1) (1) (1).jpg" class="img-fluid" alt="Assembled microcontroller parts" style="width: 800px; height: 800 px;"><br></p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 20: Program The Microcontroller </b> </p>
 <p style="font-size: 18px">Then, I went to the professor's website and copy and pasted the potentiometer motor code into the Arduino Uno. My project can now be sped up or down by a potentiometer! We can now say that my kinetic sculpture is finished! Code is shown below.</p>
 <pre  style="font-size: 18px"> <code> /*  Code to run motor in one direction based on potentiometer reading.
@@ -112,13 +158,14 @@ void loop() {
   analogWrite(3, motor_speed);
   delay(1);
 }</code> </pre>
-<img src=".\IMG_3322 (1) (1) (1).jpg" alt="My whirling dervish" style="width: 800px; height: 800 px;"> 
+<img src=".\IMG_3322 (1) (1) (1).jpg" class="img-fluid" alt="My whirling dervish" style="width: 800px; height: 800 px;"> 
 <hr>
-<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 2: Measuring A Circuit's Voltage Using A Multimeter </pre>
-<p style="font-size: 18px">  I decided to measure a motor's amps using Ohm's law, but first I need to find the voltage and resistance of the motor using a multimeter. A multimeter is used to measure the voltage and resistance of a circuit, so it was the go-to tool. I measured my voltage to be 3.16 (after hooking it up to bench power and using 3.16 volts) and my resistance was 3 (on 2000 option). <img src=".\IMG_3110 (1) (1) (1) (1).jpg" alt="Me measuring my resistance using a multimeter (helping hand by Bobby who is holding the motor in place)" style="width: 800px; height: 800 px;"> <br> Before we can use Ohm's law, you need to know how it works first.</p> 
+<p style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 2: Measuring A Circuit's Voltage Using A Multimeter </p>
+<p style="font-size: 18px">  I decided to measure a motor's amps using Ohm's law, but first I need to find the voltage and resistance of the motor using a multimeter. A multimeter is used to measure the voltage and resistance of a circuit, so it was the go-to tool. I measured my voltage to be 3.16 (after hooking it up to bench power and using 3.16 volts) and my resistance was 3 (on 2000 option). <img src=".\IMG_3110 (1) (1) (1) (1).jpg" class="img-fluid" alt="Me measuring my resistance using a multimeter (helping hand by Bobby who is holding the motor in place)" style="width: 800px; height: 800 px;"> <br> Before we can use Ohm's law, you need to know how it works first.</p> 
 <p style="font-size: 18px">  Ohm's law is used to calculate the amount of Amps in the current, the resistance, or volts depending on how you set the formula. In class, we used I= V/R (I is current in amps, V is voltage, and R is resistance). I will be using this version of the formula to caluclate my current in amps.</p>
- <img src=".\IMG_3112 (1) (1) (1) (1).jpg" alt="The Ohm's law and its variables" style="width: 800px; height: 800 px;">
+ <img src=".\IMG_3112 (1) (1) (1) (1).jpg" class="img-fluid" alt="The Ohm's law and its variables" style="width: 800px; height: 800 px;">
 <p style="font-size: 18px">  I placed my variables in my equation; my formula is now I = 3.16 / 3. After solving it, I got 1.05 as my current in amps.</p> 
-<img  src=".\IMG_3111 (1) (1) (1) (1).jpg" alt="Plugging my values into Ohm's law and finding my current in amps" style="width: 600px; 
-height: 600 px; transform: rotateZ(270deg);">
+<img  src=".\IMG_3111 (1) (1) (1) (1).jpg" class="img-fluid" alt="Plugging my values into Ohm's law and finding my current in amps" style="width: 600px; 
+height: 600 px;">
+<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>
 </html>

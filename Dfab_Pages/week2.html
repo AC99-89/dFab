@@ -1,37 +1,69 @@
 <!DOCTYPE html> 
 <html>
 <head> 
-	<title> Week 2 </title>
+		<title> Week 2 </title>
+		<link rel="stylesheet" href="./bootstrap-5.3.1-dist/css/bootstrap.css">
+		<style>
+		[class*="col"] {
+			padding: 1rem;
+			background-color: skyblue;
+			border: 2px solid white;
+			color: white;
+		}
+	</style>
 </head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/Dfab_Pages/dFabHome.html">DFab Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+    </div>
+  </div>
+</nav>
 <body style="font-size: 36px; text-align: center"> Week 2: 2D Design and Cutting </body>
 <hr>
-<pre style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 1: Construct A Press-Fit Kit </pre>
+<p style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 1: Construct A Press-Fit Kit </p>
 <p style="font-size: 18px"> This week, we learned how to work with a laser cutter. Laser cutting is a little complex, but manageable.
 	Our assignment for this week is to create a press fit kit using our laser cutting and 3d modeling skills. We were taught both CAD sketcher on Blender and Fusion 360; I chose Fusion 360 due to malfunctions on CAD sketcher. 
 My first step in constructing my pressfit kit was to design a sketch on my note book; the sketch is shown below. </p>
-<img src=".\IMG_2940 (1) (1).jpg" alt="Picture of press fit piece sketch" style="width: 500px; height: 500 px;">
+<img src=".\IMG_2940 (1) (1).jpg" class="img-fluid" alt="Picture of press fit piece sketch" style="width: 500px; height: 500 px;">
 <br>
-<img src=".\Screenshot 2023-06-24 112625.png" alt="Picture of press fit piece CAD drawing" style="width: 500px; height: 500 px;">
-<pre style="font-size: 18px; "> 	I then drew this sketch onto Fusion 360 (and accounting for kerf) (picture shown above), exported the .dxf file into 
+<img src=".\Screenshot 2023-06-24 112625.png" class="img-fluid" alt="Picture of press fit piece CAD drawing" style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; "> 	I then drew this sketch onto Fusion 360 (and accounting for kerf) (picture shown above), exported the .dxf file into 
 	a flash drive, used Rhino to set my object placement, set material thickness to 3.6 mm 
 	and kerf to 0.125 mm, set the laser cutter head point,
 and set the material type in the printer. I started the laser cutter
-printing phase and the cutter then cut out the triangles shown below. </pre>
-<img src=".\BC65EF3A-3887-45B4-BA3B-B5DDF148028F 1 (1) (1).jpg" alt="Picture of press fit piece sketch" style="width: 500px; height: 500 px;">
-<pre style="font-size: 18px; "> Sadly, these triangles had notches too small to fit, so I decided to fillet the 
-	triangle edges (0.100 mm) and change my kerf parameter to 0.100 mm. </pre>
-<img src=".\IMG_2961.jpg" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
-	<pre style="font-size: 18px; "> After three tries, 
+printing phase and the cutter then cut out the triangles shown below. </p>
+<img src=".\BC65EF3A-3887-45B4-BA3B-B5DDF148028F 1 (1) (1).jpg" class="img-fluid" alt="Picture of press fit piece sketch" style="width: 500px; height: 500 px;">
+<p style="font-size: 18px; "> Sadly, these triangles had notches too small to fit, so I decided to fillet the 
+	triangle edges (0.100 mm) and change my kerf parameter to 0.100 mm. </p>
+<img src=".\IMG_2961.jpg" class="img-fluid" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
+	<p style="font-size: 18px; "> After three tries, 
 I managed to get some triangles to successfully press fit to each other! To make all fit properly,
 I decided to change my equation. My previous equation was (Thickness - kerf) / 2. 
 Now my formula is ((Thickness + 10 mm) / 2); I also changed my 
 material thickness to 3.8 mm. With all of those changes, the pieces managed to stick together,
 and so I went on to mass produce as many triangles as the cutter could print and experimented with various 
-models out of the triangles.  </pre>
-<img src=".\IMG_2963.jpg" alt="Picture of me mass producing triangles" style="width: 500px; height: 500 px;">
-<img src=".\IMG_2964.jpg" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
-<img src=".\IMG_2965.jpg" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
-<img src=".\IMG_2966.jpg" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
+models out of the triangles.  </p>
+<img src=".\IMG_2963.jpg" class="img-fluid" alt="Picture of me mass producing triangles" style="width: 500px; height: 500 px;">
+<img src=".\IMG_2964.jpg" class="img-fluid" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
+<img src=".\IMG_2965.jpg" class="img-fluid" alt="Picture of press fit piece models" class="img-fluid" style="width: 500px; height: 500 px;">
+<img src=".\IMG_2966.jpg" class="img-fluid" alt="Picture of press fit piece models" style="width: 500px; height: 500 px;">
 <p style="font-size: 18px"> The models are certainly more of an interprative design, but there are many cool models that I made! Some models shown in the pictures include:
 	<br>
 	- A fox
@@ -46,7 +78,7 @@ models out of the triangles.  </pre>
 	<br> 
 Can you find the models in the pictures above? Do any of the models look like objects you have seen before? Do some of the models look differently than the way I interpreted them (ex. does the fox model look like a butterfly to you)? Although the kit doesn't have a set design, these pieces can still make amazing abstract art! </p>
 <hr>
-<pre style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 2: Follow a Youtube Tutorial's guide to Fusion 360 </pre>
+<p style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 2: Follow a Youtube Tutorial's guide to Fusion 360 </p>
 <p style="font-size: 18px"> In order to properly learn Fusion 360, We also had to follow a Youtube Tutorial. I decided to go for the first link on my professor's website. The tutorial was about sketch commands. Here are the following commands that I learned: </p>
 <br>
 <p style=" font-size: 18 px"> <font color=green> - Change Active Units:</font> <a style="font-size: 18px"> Go to  "Change Document Settings" and click the button to the left of it. Click on "Change Active Units" and press the button with a paper and pencil logo. Go to the dropdown box that just appeared and select your desired unit and click okay. If you want to set your new unit as the default unit, click the checkbox that says "Set as Default." </a> <br> </p>
@@ -61,16 +93,23 @@ Can you find the models in the pictures above? Do any of the models look like ob
 <p style="text-align: left;"> <font color=green> - Keyboard Shortcut For Dimension: </font> <a style='font-size: 18px;'> D </a> <br> </p>
 <p style="font-size: 18px;"> I am already familiar with most common commands in Fusion 360 thanks to my Drafting I and Drafting II experience from school, so I only placed the shortcuts I'm not familiar with. </p>
 <hr>
-<pre style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 3: Create CAD Models and Make An Assembly </pre>
+<p style="color: royalblue; text-size: 24 px; text-align: center"> Assignment 3: Create CAD Models and Make An Assembly </p>
 <p style="font-size: 18px"> Next up, we used our newfound skills to the test by designing 2 items in CAD and by making an assembly using those items. I decided that for my assembly, I will be making a water bottle holder. First I designed the water bottle by making circles and filleting the sides. My water bottle body is about 4 inches and my head is about 1 inch, so I did a half inch fillet on the body; I made a 1 inch head and filleted half of it to create my shape shown below.</p>
-<img src=".\Screenshot 2023-06-26 121204.png" alt="Picture of the water bottle." style="width: 500px; height: 500 px;">
+<img src=".\Screenshot 2023-06-26 121204.png" alt="Picture of the water bottle." class="img-fluid" style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c994eb8079d2fb3c4b8?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px"> Second, I designed the cup holder. (The minecraft hopper was a big inspiration for the cup holder as you could probably tell.) First, I made the rectangles and extruded them (I drew one base rectangle, then a smaller rectangle below it, then I drew four sub rectangles below the smaller rectangle and extruded all of the shapes). Then I used the shell command and shelled the inner surfaces of the holder to get body 1. Then, I shelled the outer body to get the final product shown below.</p>
-<img src=".\Screenshot 2023-06-26 121158.png" alt="Picture of the water bottle holder." style="width: 500px; height: 500 px;">
+<img src=".\Screenshot 2023-06-26 121158.png" alt="Picture of the water bottle holder." class="img-fluid" style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c9904f60ff2e371049d?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px;"> <b> Time for the assembly! </b> </p>
 <p style="font-size: 18px; text-align; left"> First, I created a new project in the data panel and uploaded my drawings of the water bottle and water bottle holder. Then, I made a new file, saved it, and uploaded it to the new project. Next, I imported my drawings to the file. Afterwards, I went to the assembly section and selected the joint assembly. (The reason I chose joint assembly was because the holder and the bottle would conjoin together when you combine them.) I selected the faces for the water bottle to conjoin with, set my angles and offsets, and I finally have a finished assembly! The image on the left is the unassembled drawing; the image on the right is the assembled drawing. </p>
-<img src=".\Screenshot 2023-06-26 165102.png" alt="Picture of the unassembled drawing." style="width: 500px; height: 500 px;">
-<img src=".\Screenshot 2023-06-26 165214.png" alt="Picture of the assembled drawing." style="width: 500px; height: 500 px;">
+<img src=".\Screenshot 2023-06-26 165102.png" alt="Picture of the unassembled drawing." class="img-fluid" style="width: 500px; height: 500 px;">
+<img src=".\Screenshot 2023-06-26 165214.png" alt="Picture of the assembled drawing." class="img-fluid" style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c99e2a52bcea6315102?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
+	<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>
 </html>

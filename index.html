@@ -1,11 +1,54 @@
-<!DOCTYPE html> 
-<html>
-<head> 
-	<title> Ali's Crafts </title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ali's Portfolio</title>
+	<link rel="stylesheet" href="./bootstrap-5.3.1-dist/css/bootstrap.css">
+	<style>
+		[class*="col"] {
+			padding: 1rem;
+			background-color: skyblue;
+			border: 2px solid white;
+			color: white;
+		}
+	</style>
 </head>
 <body>
-<h1 style="font-size:57px; text-align: center;"> Ali's Crafts </h1>
-<h2 style="font-size:34px; text-align: center;"> <a   href="./aboutMe.html"> About Me </a></h2>
-<a   href="./Dfab_Pages/dFabHome.html"> <p style="font-size:34px; text-align: center;"> Digital Fabrication Class </p></a>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+    </div>
+  </div>
+</nav>
+	<h1 style="font-size:57px; text-align: center;"> Ali's Portfolio </h1>
+	<h2 style="font-size:34px; text-align: center;"> <div class="container-lg border"> 
+			<div class="row">  
+				<div class="col-sm"> <p><a href="./aboutMe.html" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">About Me</a></p> </div>
+				<div class="col"> <p><a href="./whyThis.html" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Why Make This?</a></p></div>
+			</div>
+		</div></h2>
+	<div class="container-sm border"> 
+		<div class="row">  
+				<div class="col-sm"> <p style="font-size:34px; text-align: center;"><a href="./Dfab_Pages/dFabHome.html" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Digital Fabrication Class</a></p> </div>
+				<div class="col-sm"> <p style="font-size:34px; text-align: center;"><a href="./projects.html" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Projects</a></p> </div>
+				
+		 </div>
+
+<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>
 </body>
 </html>

@@ -2,12 +2,44 @@
 <html>
 <head> 
 	<title> Week 7 </title>
+  <link rel="stylesheet" href=".\bootstrap-5.3.1-dist\css\bootstrap.css">
+  <style>
+    [class*="col"] {
+      padding: 1rem;
+      background-color: skyblue;
+      border: 2px solid white;
+      color: white;
+    }
+  </style>
 </head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/Dfab_Pages/dFabHome.html">DFab Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+    </div>
+  </div>
+</nav>
 <body style="font-size: 36px; text-align: center"> Week 7: Output Devices </body>
 <p style="font-size: 18px; text-align: center;"> For today's week, we used output devices and learned how to use servos, buzzers, and various other output devices.</p>
 <hr>
-<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Use An Output Device You've
-Never Used Before </pre>
+<p style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Use An Output Device You've
+Never Used Before </p>
 <p style="font-size: 18px; text-align: center;"> I decided to use buzzers and I wanted to play a classic piece of music with them. I decided to copy down the Transcendental Etude No 1 by Franz Liszt but that proved to be too complex; I then decided to instead paste the  Transcendental Etude No. 6 by Franz Liszt instead. </p>
 <p style="font-size: 18px; text-align: center"> <b> Step 1: Complete The Circuit </b> </p>
 <p style="font-size: 18px; text-align: center;"> First, I got my buzzer and attached it to ground and pin 10 on my Arduino Uno. I then attached the wires to the buzzer and my circuit was complete. </p>
@@ -512,12 +544,12 @@ void loop() {
 </code> </pre>
 <iframe width="320" height="560" src="https://www.youtube.com/embed/2c59iwO_Cdc" title="Week 7 Assignment 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <hr>
-<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 2: Program A Microcontroller
-For Input And Output Devices </pre>
+<p style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 2: Program A Microcontroller
+For Input And Output Devices </p>
 <p style="font-size: 18px; text-align: center;"> For this assignment, we needed to program an input and output device using a microcontroller. I decided to use a ultrasonic sensor and a buzzer. My idea is to make the buzzer play a sound when the sensor has an error occurance.</p>
 <p style="font-size: 18px; text-align: center"> <b> Step 1: Complete The Circuit </b> </p>
 <p style="font-size: 18px; text-align: center;"> I attached my wires onto my arduino and placed my ultrasonic sensor to my breadboard; I attached my buzzer to GND and pin 11, and the ultrasonic sensor is attached to GND, 5V, and pin 9 for trigPin and 10 for echoPin.</p>
-<img src=".\IMG_3246 (1) (1) (1).jpg" alt="Finished Circuit." style="width: 500px; height: 500 px;">
+<img src=".\IMG_3246 (1) (1) (1).jpg" class="img-fluid" alt="Finished Circuit." style="width: 500px; height: 500 px;">
 <p style="font-size: 18px; text-align: center"> <b> Step 2: Program The Circuit </b> </p>
 <p style="font-size: 18px; text-align: center;"> For my programming, it once again proved too advanced for my level of programming (I clearly need to learn more programming myself). So, I went onto google and found some Arduino code for my project <a   href=https://create.arduino.cc/editor/mertarduinotech/b7022e05-f709-4003-b2a7-5c487ee25007/preview/> that you can find with this link. </a>  The only edit I did was to remove all LED code since I'm not using an LED in my project. My project worked and you can see it working with the video below; code is also shown below.</p>
 <pre  style="font-size: 18px"> <code> 
@@ -569,26 +601,35 @@ Serial.print("Distance: ");
 Serial.println(distance);
 }
 </code> </pre>
+<div class="ratio ratio-16x9">
 <iframe width="853" height="480" src="https://www.youtube.com/embed/zsT7JrIt9Pc" title="Sensor Buzzer Week 7 Assignment 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 <hr>
-<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 3: Find Time Domain Of Output Device
-Using An Oscilloscope </pre>
+<p style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 3: Find Time Domain Of Output Device
+Using An Oscilloscope </p>
 <p style="font-size: 18px; text-align: center;"> I decided to find the time domain of my week 7 assignment one buzzer one . I noticed that my waves vary on movement depending on the notes. For example, on the first note, the waves are very stable, but when you move on to the second note, the waves move drastically. The domain is 4.00 ms and the time domain is 0.471 ms. Here is a video and image of me using the oscilloscope.</p>
-<img src=".\Oscilloscope.jpg" alt="Using the oscilloscope." style="width: 500px; height: 500 px;">
+<img src=".\Oscilloscope.jpg" class="img-fluid" alt="Using the oscilloscope." style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe width="853" height="480" src="https://www.youtube.com/embed/i95MuAZx7Zk" title="Week 7 Assignment 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 <hr>
-<pre style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 4: Prepare CNC Files For Next Week </pre>
+<p style="font-size: 36px; text-align: center; color: royalblue;"> Assignment 4: Prepare CNC Files For Next Week </p>
 <p style="font-size: 18px; text-align: center;"> For the next assignment, we had to make files for CNC milling for next week. I plan on 3d printing my cast mold but I do need to make a CNC milling file.</p>
 <p style="font-size: 18px; text-align: center"> <b> Step 1: Make CNC File </b> </p>
 <p style="font-size: 18px; text-align: center;"> I decided to make a crown as my CNC file. I drew it up in Fusion and you can see the dimensions and the body below.</p>
-<img src=".\crownDimensions.png" alt="Crown Dimensions." style="width: 500px; height: 500 px;">
-<img src=".\crownBody.png" alt="Crown Body." style="width: 500px; height: 500 px;">
+<img src=".\crownDimensions.png" class="img-fluid" alt="Crown Dimensions." style="width: 500px; height: 500 px;">
+<img src=".\crownBody.png" class="img-fluid" alt="Crown Body." style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c99e77ffbf8105eaa3d?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
 <p style="font-size: 18px; text-align: center"> <b> Step 2: Make Molding And Casting File </b> </p>
 <p style="font-size: 18px; text-align: center;"> I decided to make an amulet object for molding and casting. I drew up the object and you can see the dimensions and various photos below.</p>
-<img src=".\amuletDimensions.png" alt="Amulet Dimensions." style="width: 500px; height: 500 px;">
-<img src=".\amuletIsometricView.png" alt="Amulet Isometric View." style="width: 500px; height: 500 px;">
-<img src=".\amuletTopView.png" alt="Amulet Top View." style="width: 500px; height: 500 px;">
-<img src=".\amuletRightHandSideView.png" alt="Amulet Right Hand Side View." style="width: 500px; height: 500 px;">
+<img src=".\amuletDimensions.png" class="img-fluid" alt="Amulet Dimensions." style="width: 500px; height: 500 px;">
+<img src=".\amuletIsometricView.png" class="img-fluid" alt="Amulet Isometric View." style="width: 500px; height: 500 px;">
+<img src=".\amuletTopView.png" class="img-fluid" alt="Amulet Top View." style="width: 500px; height: 500 px;">
+<img src=".\amuletRightHandSideView.png" class="img-fluid" alt="Amulet Right Hand Side View." style="width: 500px; height: 500 px;">
+<div class="ratio ratio-16x9">
 <iframe src="https://gmail3422755.autodesk360.com/shares/public/SHd38bfQT1fb47330c996bc81467a8c43ece?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+</div>
+<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>
 </html>

@@ -2,16 +2,48 @@
 <html>
 <head> 
 	<title> Week 9 </title>
+  <link rel="stylesheet" href=".\bootstrap-5.3.1-dist\css\bootstrap.css">
+  <style>
+    [class*="col"] {
+      padding: 1rem;
+      background-color: skyblue;
+      border: 2px solid white;
+      color: white;
+    }
+  </style>
 </head>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/Dfab_Pages/dFabHome.html">DFab Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+    </div>
+  </div>
+</nav>
 <body style="font-size: 36px; text-align: center"> Week 9: Radio, Wifi, Bluetooth (IoT)  </body>
 <p style="font-size: 18px"> This week, we learned how to remotely control two microcontrollers using radio or wifi by using ESP32 microcontrollers. Also, this is the last normal assignment of the semester. The rest of the weeks will all be about working on the final project. We are getting to the end of the road now!  </p>
 <hr>
-<pre style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Remotely Control A Microcontroller 
-Using Wifi Or Radio (With A Partner!) </pre>
+<p style="text-size: 24px; text-align: center; color: royalblue;"> Assignment 1: Remotely Control A Microcontroller 
+Using Wifi Or Radio (With A Partner!) </p>
 <p style="font-size: 18px"> For this assignment, we were allowed to work with a partner and so I teamed up with Gavin Lim; <a   href=https://gavinnlimm.github.io/phys-s-12/01_intro/index.html> you can check out his website using this link. </a> We decided to remotely control an LED light using Wifi. (This will be great practice for my remote controlled ant!) </p>
 <p style="font-size: 18px; text-align: center;"> <b> Step 1: Setting Up Our Circuit </b> </p>
 <p style="font-size: 18px"> We needed to set up our circuit which was pretty simple. We plugged a wire to ground onto a breadboard and placed a wire onto pin 5 of our ESP 32 Dev Module and placed it onto a breadboard. Then, we got a 10K resistor and an LED and our circuit was finished. </p>
-<img src=".\week9Circuit.jpg" alt="Our circuit." style="width: 500px; height: 500 px;">
+<img src=".\week9Circuit.jpg" class="img-fluid" alt="Our circuit." style="width: 500px; height: 500 px;">
 <p style="font-size: 18px; text-align: center;"> <b> Step 2: Setting Up FireBase </b> </p>
 <p style="font-size: 18px"> Gavin mainly did this part. Gavin logged on to firebase and created a database. He then set the rules to true. Gavin then took example code from the professor's website and pasted it into our ESP-32 Dev Module and pasted our Wifi SSD and Password including our Firebase secret code and URL. (For privacy reasons, these steps do not have any photos and does not include extra information.) The code for the microcontroller is shown below.  </p>
 <pre  style="font-size: 18px"> <code> 
@@ -74,5 +106,8 @@ Using Wifi Or Radio (With A Partner!) </pre>
 
     }</code> </pre>
 <p style="font-size: 18px"> Our project worked! The microcontroller successfully communicates with the Firebase data and so we finished our last regular assignment! Time to focus all on the final project! Make sure to check out Gavin Lim's website to see all the cool things he built as well! Below is a video of how our project works.  </p>
+<div class="ratio ratio-16x9">
     <iframe width="853" height="480" src="https://www.youtube.com/embed/Ak_ZU5y4sfE" title="Week 9 Remote Controlled LED Light" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>    
 </html>

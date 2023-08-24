@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Website Overhaul</title>
+	<link rel="stylesheet" href="./bootstrap-5.3.1-dist/css/bootstrap.css">
+	<style>
+		[class*="col"] {
+			padding: 1rem;
+			background-color: skyblue;
+			border: 2px solid white;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://ac99-89.github.io/dFab/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://ac99-89.github.io/dFab/aboutMe.html">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./projects.html">Projects</a>
+        </li>
+        
+    </div>
+  </div>
+</nav>
+<hr>
+  <h1 class="fs-1" style="color: deepskyblue; text-align: center;"> August Website Overhaul </h1>
+	<p class="fs-2" style="text-align: center;" > During August, I wanted to work on making my website look better.</p>
+  <p class="fs-2" style="color: royalblue; text-align: center;" > Goals: <br> Make An Attractive Website <br> Make The Website Mobile Friendly</p>
+  <hr>
+  <p class="fs-3" > The images below shows you how the website looked from August 7 to August 24.</p>
+  <img src=".\Screenshot 2023-08-23 191543.png" class="img-fluid" alt="Old Welcome Section">
+  <img src=".\Screenshot 2023-08-23 191615.png" class="img-fluid" alt="Old About Me Page">
+  <img src=".\Screenshot 2023-08-23 191632.png" class="img-fluid" alt="Old DFab Section">
+  <br>
+  <br>
+  <p class="fs-3" > The images below shows you how the website looks now.</p>
+    <img src=".\Screenshot 2023-08-23 193814.png" class="img-fluid" alt="Welcome Section">
+    <img src=".\Screenshot 2023-08-23 193829.png" class="img-fluid" alt="About Me Page">
+    <img src=".\Screenshot 2023-08-23 193858.png" class="img-fluid" alt="DFab Section">
+    <img src=".\Screenshot 2023-08-23 193842.png" class="img-fluid" alt="Brand new portfolio making reasoning.">
+    <img src=".\Screenshot 2023-08-23 193921.png" class="img-fluid" alt="Brand new porjects page.">
+    <hr>
+  <h2 class="fs-1 text-center" style="color: seagreen;"> How I Updated The Website</h2>
+    <p class="fs-2" style="text-align: center;"> <b> Step 1: Get Resources And Help </b></p>
+      <p class="fs-3" > First things first, I downloaded <a href="https://getbootstrap.com/docs/5.3/getting-started/download/"> Bootsrap</a> from the official website. I used Bootsrap because I believed that it would make my life easier when using CSS.
+        <br>
+      I then decided to follow a <a href="https://www.youtube.com/watch?v=-qfEOE4vtxE&t=347s"> Bootstrap tutorial</a> on YouTube. Although Bootstrap has documentation on how to use its features, I wanted to supplement my learning with a tutorial. (The tutorial is extremely helpful and I recommend everyone to use it when learning Bootstrap.) 
+        <br>
+        Since the tutorial guy (who I will call tutor for the rest of this documentation) recommended to use a plugin called <a href="https://www.emmet.io/"> Emmet,</a> I decided to download it. Emmet is extremely helpful because it autofills lines of code for you (for example, instead of writing all the doctypes and html tags yourself, just type in a "!" and Emmet will do it for you). The plugin definetly sped up my web developing process and I highly recommend you all to use it. (NOTE: Those who want to use Emmet on Sublime Text will need to use <a href="https://github.com/emmetio/sublime-text-plugin"> this link</a> instead of the link provided by the Emmet website.) For all the website's, I used Bootstrap's own CSS and Javascript plugins.</p>
+        <br>
+    <p class="fs-2 text-center"> <b> Step 2: Recreate The Main Page </b></p>
+      <p class="fs-3" > Second, I wanted to recreate the main page to take away the 1990s look from it.</p>
+      <p class="fs-3" > To start out, I created some containers for the links. I realized they looked ugly, so I used the tutors styling and the container became blue. I then colored the links white to make them noticeable on the container. I repeated these steps on the about me link and the digital fabrication class link. I repeated the process on the links for the Digital Fabrication Class. I also changed the website name from "Ali's Crafts" to "Ali's Portfolio" because I believed it sounded more mature and cleaner. </p>
+    <p class="fs-2 text-center"> <b> Step 3: Recreate The About Me Page</b></p>
+      <p class="fs-3" > The About Me Page frankly looks like something a five year old would have wrote. I don't even talk about myself at all! I changed this by adding images and more information about myself, such as my favorite piano piece to play, and other hobbies I enjoy. I may add a picture of myself later once I find a good photo. </p>
+    <p class="fs-2 text-center"> <b> Step 4: Add A Page Talking About My Reasoning In Making This Portfolio</b></p>
+      <p class="fs-3" > Obviously, the reason I made this portfolio was so I don't get an F in my Digital Fabrication Class, but most people would not know that, so I added an entire page just to say that! Of course, I also talked about my goals with this portfolio and what mechanisms I will be creating. </p>
+    <p class="fs-2 text-center"> <b> Step 4: Add A Navigation Bar</b></p>
+      <p class="fs-3" > I quickly realized that having to constantly use the back arrow to go back to the previous page was annoying, even more annoying for mobile users. So, I decided to add a mobile friendly Navbar by taking the Navbar code from the Bootstrap website and implementing it into EVERY single one of my webpages. (This took thirty minutes to do.) The only thing I took out from the code was the dropdown, disable button, and the search bar; the searchbar in the projects webpage still exists because I wanted to make a way to search and access specific projects quickly. (The search bar doesn't work right now and I have no intention of making it work until I add in more projects.) The Digital Fabrication pages have their own unique DFab Home button to quickly go back to the DFab Main Page. </p>
+    <p class="fs-2 text-center"> <b> Step 5: Make Images Take Up A Screen's Exact Space</b></p>
+    <p class="fs-3" > The main problem keeping this website from being mobile friendly (apart from the code showcases) is the image size. The images take up a fized amount of space, so if their is not enough space on a screen, mobile users will need to scroll sideways to access full image. To fix this, I edited all images by adding an "img-fluid" class and that fixed the problem, but it added a new problem: some images and videos are too big on PC (It takes up the full screen length). I do not think there is a proper way to fix this so I may have to just deal with it. If I find a solution, I will fix it as quickly as possible. (I will admit, it gives a cool cinematic feel though.) </p>
+    <hr>
+    <p class="fs-3" > And that is all of the major changes I did to my website! I may do small updates later, but I intend on making a big website update again in a year (if needed). Feel free to use the new Navbar to navigate around the website! </p>
+
+
+
+	<script src="./bootstrap-5.3.1-dist/js/bootstrap.js"></script>
+</body>
+</html>
